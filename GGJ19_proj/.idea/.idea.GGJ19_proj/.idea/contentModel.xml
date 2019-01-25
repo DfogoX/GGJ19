@@ -6,8 +6,17 @@
     <e p="C:\Users\diogo\Desktop\GGJ19\GGJ19\GGJ19_proj" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Audio" t="Include">
+          <e p="delete_later.txt" t="Include" />
+        </e>
+        <e p="Materials" t="Include">
+          <e p="delete_later.txt" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
           <e p="player_moves.cs" t="Include" />
+        </e>
+        <e p="Sprites" t="Include">
+          <e p="delete_later.txt" t="Include" />
         </e>
       </e>
       <e p="GGJ19_proj.sln" t="IncludeFlat" />
