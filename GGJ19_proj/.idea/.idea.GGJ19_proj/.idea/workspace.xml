@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="47c246cf-b9b3-44d7-82f8-8d7cde1c55be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/player_moves.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/player_moves.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
-    </list>
+    <list default="true" id="47c246cf-b9b3-44d7-82f8-8d7cde1c55be" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +16,7 @@
             <state relative-caret-position="467">
               <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
               <folding>
-                <marker date="1548451710505" expanded="true" signature="6:92" ph="..." />
-                <marker date="1548451710505" expanded="true" signature="135:1423" ph="{...}" />
+                <element signature="e#0#92#0" expanded="true" />
                 <marker date="1548451710505" expanded="true" signature="377:550" ph="{...}" />
                 <marker date="1548451710505" expanded="true" signature="608:1420" ph="{...}" />
                 <marker date="1548451710505" expanded="true" signature="706:786" ph="{...}" />
@@ -54,9 +50,9 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="240" />
-    <option name="y" value="127" />
+    <option name="y" value="126" />
     <option name="width" value="1440" />
-    <option name="height" value="774" />
+    <option name="height" value="775" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -64,6 +60,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AssemblyExplorer" />
       <pane id="UnityExplorer">
         <subPane>
           <expand>
@@ -85,7 +82,6 @@
       <pane id="SolutionExplorer">
         <option name="show-all-files" value="false" />
       </pane>
-      <pane id="AssemblyExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -131,11 +127,12 @@
       <updated>1548445442426</updated>
       <workItem from="1548445446717" duration="758000" />
       <workItem from="1548446461052" duration="2907000" />
+      <workItem from="1548451974521" duration="38000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3665000" />
+    <option name="totallyTimeSpent" value="3703000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -205,7 +202,6 @@
           <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
           <folding>
             <marker date="1548451710505" expanded="true" signature="6:92" ph="..." />
-            <marker date="1548451710505" expanded="true" signature="135:1423" ph="{...}" />
             <marker date="1548451710505" expanded="true" signature="377:550" ph="{...}" />
             <marker date="1548451710505" expanded="true" signature="608:1420" ph="{...}" />
             <marker date="1548451710505" expanded="true" signature="706:786" ph="{...}" />
