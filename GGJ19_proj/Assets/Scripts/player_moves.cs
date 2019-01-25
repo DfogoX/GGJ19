@@ -21,7 +21,7 @@ public class player_moves : MonoBehaviour
     {
 
         string key = Input.inputString;
-        if(key)
+        if(key.Length>0)
             Debug.Log(key);
         //Store the current horizontal input in the float moveHorizontal.
         float moveHorizontal = Input.GetAxis ("Horizontal");
