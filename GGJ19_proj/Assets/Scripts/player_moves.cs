@@ -1,30 +1,46 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class player_moves : MonoBehaviour {
-    public float speed; //Floating point variable to store the player's movement speed.
+    public float speed = 6.0f;
+    public float sprintSpeed = 12.0f;
+    public float gravity = 20.0f;
 
-    private Rigidbody2D rb2d; //Store a reference to the Rigidbody2D component required to use 2D Physics.
+    private Vector3 moveDirection = Vector3.zero;
+    private CharacterController controller;
 
-    // Start is called before the first frame update
-    void Start() {
-        rb2d = GetComponent<Rigidbody2D>();
+    private void Start() {
+        controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update() {
-        string key = Input.inputString;
-        if (key.Length > 0)
-            Debug.Log(key);
-        //Store the current horizontal input in the float moveHorizontal.
-        float moveHorizontal = Input.GetAxis("Horizontal");
+        var currSpeed = speed;
+        moveDirection = Vector3.zero;
 
-        //Store the current vertical input in the float moveVertical.
-        float moveVertical = Input.GetAxis("Vertical");
+        if (Input.GetKey("up") || Input.GetKey("w")) {
+            moveDirection += new Vector3(0.0f, 1.0f, 0.0f);
+        }
 
-        //Use the two store floats to create a new Vector2 variable movement.
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+        if (Input.GetKey("left") || Input.GetKey("a")) {
+            moveDirection += new Vector3(-1.0f, 0.0f, 0.0f);
+        }
 
-        //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
-        rb2d.AddForce(movement * speed);
+        if (Input.GetKey("down") || Input.GetKey("s")) {
+            moveDirection += new Vector3(0.0f, -1.0f, 0.0f);
+        }
+
+        if (Input.GetKey("right") || Input.GetKey("d")) {
+            moveDirection += new Vector3(1.0f, 0.0f, 0.0f);
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {
+            currSpeed = sprintSpeed;
+        }
+
+        moveDirection = moveDirection * currSpeed;
+
+        //Debug.Log("mov_f: " + moveDirection);
+        controller.Move(moveDirection * Time.deltaTime);
     }
 }
