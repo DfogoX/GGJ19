@@ -26,7 +26,7 @@ public class enemy_moves : MonoBehaviour {
     {
         source = GetComponent<AudioSource>();
         rigid = GetComponent<Rigidbody2D>();
-        rend = GetComponent<SpriteRenderer>();
+        rend = GetComponentInChildren<SpriteRenderer>();
         coll = GetComponent<Collider2D>();
 
         source.clip = soundSpawn;
