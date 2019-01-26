@@ -8,7 +8,7 @@ public class enemy_moves : MonoBehaviour {
     private Rigidbody2D rigid;
     private Collider2D coll;
     private AudioSource source;
-
+    private Animator animator;
     public AudioClip soundSpawn;
     public AudioClip soundAttack;
     public int MoveSpeed = 4;
@@ -25,7 +25,7 @@ public class enemy_moves : MonoBehaviour {
         rigid = GetComponent<Rigidbody2D>();
         rend = GetComponentInChildren<SpriteRenderer>();
         coll = GetComponent<Collider2D>();
-
+        animator = GetComponentInChildren<Animator>();
         source.clip = soundSpawn;
         source.Play();
     }
@@ -42,6 +42,12 @@ public class enemy_moves : MonoBehaviour {
         else if (dist > MinDist && cd < 0.1f) {
             //  transform.position += transform. * MoveSpeed * Time.deltaTime;
             moves = Vector3.Normalize(playerTransform.position - transform.position);
+            if (moves.x > 0) {
+                animator.Play("GhostIdleRight");
+            }
+            else {
+                animator.Play("GhostIdle");
+            }
             rigid.MovePosition(rigid.position + moves * MoveSpeed * Time.deltaTime);
             if (dist <= MaxDist) {
                 rigid.MovePosition(rigid.position + moves * MoveSpeed * 2 * Time.deltaTime);
