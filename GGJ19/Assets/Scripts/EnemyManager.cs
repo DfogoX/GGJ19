@@ -5,6 +5,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour {
+    
     public GameObject enemy;
     public float spawnTime = 3.0f;
     public Transform[] spawners;

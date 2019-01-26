@@ -5,9 +5,13 @@ using UnityEngine;
 
 public class enemy_moves : MonoBehaviour {
 
+    
     private SpriteRenderer rend;
     private Rigidbody2D rigid;
     private Collider2D coll;
+    private AudioSource source;
+
+    public AudioClip soundSpawn;
     public int MoveSpeed = 4;
     public float MaxDist = 4;
     public float MinDist = 2;
@@ -19,9 +23,12 @@ public class enemy_moves : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
+        source = GetComponent<AudioSource>();
         rigid = GetComponent<Rigidbody2D>();
         rend = GetComponent<SpriteRenderer>();
         coll = GetComponent<Collider2D>();
+        
+        source.PlayOneShot(soundSpawn,70);
     }
 
     // Update is called once per frame
