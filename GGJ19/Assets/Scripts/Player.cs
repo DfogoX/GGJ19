@@ -77,6 +77,10 @@ public class Player : MonoBehaviour {
         }
 
         animator.speed = currSpeed / speed;
+        
+        
+        
+        
         rigid.MovePosition(rigid.position + endMoveDirection * Time.deltaTime);
     }
 
