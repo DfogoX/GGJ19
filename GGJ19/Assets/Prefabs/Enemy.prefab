@@ -95,7 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d1608a1eba2c146bc95f29c0b95db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundSpawn: {fileID: 0}
+  soundSpawn: {fileID: 8300000, guid: 0903339ebe194a54490ee0aa3b961cae, type: 3}
+  soundAttack: {fileID: 8300000, guid: bc8eaa707aa79894189eae94f4542d70, type: 3}
   MoveSpeed: 4
   MaxDist: 5
   MinDist: 1
@@ -147,10 +148,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7b3030f93a8ab1d49ac5c909d96f4f9e, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.25
   Loop: 0
   Mute: 0
   Spatialize: 0
