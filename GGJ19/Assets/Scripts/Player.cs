@@ -1,24 +1,29 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+    
     private Rigidbody2D rigid;
     private Animator animator;
+    private SpriteRenderer rend;
     private Vector2 moveDirection = Vector2.zero;
+    private float cd_damage = 0.5f;
+    
     public float speed = 6.0f;
     public float sprintSpeed = 12.0f;
     public float stamina = 100.0f;
     public float moveX = 0f;
     public float moveY = 0f;
-    public RuntimeAnimatorController waterController;
-    private RuntimeAnimatorController defaultController;
-    public int playerHP = 5;
+    private int playerHP = 5;
+    private bool immune;
 
     private void Start() {
+        immune = false;
         GameManager.GM.setPlayer(this);
         rigid = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
-        
+        rend = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -28,6 +33,7 @@ public class Player : MonoBehaviour {
         spawning();
 
         damaging();
+
     }
 
     private void move() {
@@ -138,7 +144,6 @@ public class Player : MonoBehaviour {
     private void playAnim(string animName) {
         animator.Play(animName);
     }
-
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("river")) {
             var sprOne = transform.GetChild(1);
@@ -158,14 +163,14 @@ public class Player : MonoBehaviour {
             animator = sprOne.GetComponent<Animator>();
         }        
     }
-
+//SPAWNING
     private void spawning() {
         if (Input.GetKey(KeyCode.K))
             GameManager.GM.activateSpawner();
         if (Input.GetKey(KeyCode.L))
             GameManager.GM.deactivateSpawner();
     }
-
+//DAMAGING
     private void damaging() {
         if (Input.GetKeyDown(KeyCode.C)) {
             GameManager.GM.damagePlayer(1);
@@ -180,12 +185,30 @@ public class Player : MonoBehaviour {
             GameManager.GM.healPlayer(1);
             Debug.Log("hp: " + playerHP);
         }
+
+        cd_damage = 3.0f;
+
     }
 
-    public void takeDamage(int amount) {
-        playerHP -= amount;
+    public bool takeDamage(int amount) {
+        if (!immune) {
+            Debug.Log("entrou");
+            rend.color = Color.red;
+            playerHP -= amount;
+            immune = true;
+            StartCoroutine(ImmunityCooldown());
+            return true;
+        }
+
+        return false;
     }
-    
+
+    private IEnumerator ImmunityCooldown() {
+        yield return new WaitForSeconds(cd_damage);
+        immune = false;
+        rend.color = Color.white;
+    }
+
     public void giveHeal(int amount) {
         playerHP += amount;
     }

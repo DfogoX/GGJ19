@@ -24,7 +24,6 @@ public class CatInATree : MonoBehaviour {
             if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1
                 && !animator.IsInTransition(0) &&
                 animator.GetCurrentAnimatorStateInfo(0).IsName("Saved") && !animationEnded) {
-                Debug.Log("Animation Ended");
                 animationEnded = true;
                 var stuck = transform.GetChild(1);
                 stuck.GetComponent<SpriteRenderer>().enabled = false;

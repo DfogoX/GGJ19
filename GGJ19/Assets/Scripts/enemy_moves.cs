@@ -48,15 +48,18 @@ public class enemy_moves : MonoBehaviour {
             }
         }
         else {
-            source.clip = soundAttack;
-            source.Play();
+            
             //transform.localScale = new Vector3(2 / 3, 2 / 3, 0);
-            if (dist < RunDist)
-                rigid.MovePosition(rigid.position + moves * 1 / 4 * MoveSpeed * Time.deltaTime);
+            if (dist < RunDist) {}
+                //rigid.MovePosition(rigid.position + moves * 1 / 4 * MoveSpeed * Time.deltaTime);
             else {
+                source.clip = soundAttack;
+                source.Play();
                 rigid.MovePosition(rigid.position + moves * 2 * MoveSpeed * Time.deltaTime);
-                if (cd < 0.1f)
+                if (cd < 0.1f) {
                     cd = 1.5f;
+                    
+                }
             }
 
             cd -= Time.deltaTime;
