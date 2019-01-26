@@ -5,21 +5,20 @@ using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
-public class dog_moves : MonoBehaviour
-{
+public class family_follow : MonoBehaviour {
     // Start is called before the first frame update
     public GameObject _Item;
     private Animator animator;
     private bool caught = false;
+
     void Start() {
         animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         if (caught) {
-            Transform playerTransform = GameManager.GM.findPlayer(); 
+            Transform playerTransform = GameManager.GM.findPlayer();
             var dist = Vector3.Distance(transform.position, playerTransform.position);
             var direction = Vector3.zero;
             if (dist > 1) {
@@ -28,27 +27,37 @@ public class dog_moves : MonoBehaviour
             }
 
             if (direction != Vector3.zero) {
-                if (direction.x > 0) {
-                    animator.Play("DogWalkGeneralLeft");
-                }
+                //Moving more horizontaly
+                if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y)) {
+                    if (direction.x > 0) {
+                        animator.Play("MoveRight");
+                    }
+                    else {
+                        animator.Play("MoveLeft");
+                    }
+                }//Moving more verticaly
                 else {
-                    animator.Play("DogWalkGeneralRight");
+                    if (direction.y > 0) {
+                        animator.Play("MoveUp");
+                    }
+                    else {
+                        animator.Play("MoveDown");
+                    }
                 }
             }
             else {
-                animator.Play("DogIdleHappy");
+                animator.Play("Idle");
             }
         }
     }
-   
+
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player") && !caught) {
-            animator.Play("DogIdleHappy");
+            animator.Play("Idle");
             caught = true;
-            Invoke("Spawn",0);
+            Invoke("Spawn", 0);
         }
-        
     }
 
     void Spawn() {
