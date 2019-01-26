@@ -192,7 +192,6 @@ public class Player : MonoBehaviour {
 
     public bool takeDamage(int amount) {
         if (!immune) {
-            Debug.Log("entrou");
             rend.color = Color.red;
             playerHP -= amount;
             immune = true;
