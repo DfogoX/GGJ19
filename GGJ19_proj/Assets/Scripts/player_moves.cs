@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class player_moves : MonoBehaviour {
     public float speed = 6.0f;
@@ -26,17 +25,17 @@ public class player_moves : MonoBehaviour {
 
         if (Input.GetKeyDown("left") || Input.GetKeyDown("a")) {
             moveDirection = new Vector3(-1.0f, 0.0f, 0.0f);
-            //animator.Play("PlayerMoveLeft");
+            animator.Play("PlayerMoveLeft");
         }
 
         if (Input.GetKeyDown("down") || Input.GetKeyDown("s")) {
             moveDirection = new Vector3(0.0f, -1.0f, 0.0f);
-            //animator.Play("PlayerMoveDown");
+            animator.Play("PlayerMoveDown");
         }
 
         if (Input.GetKeyDown("right") || Input.GetKeyDown("d")) {
             moveDirection = new Vector3(1.0f, 0.0f, 0.0f);
-            //animator.Play("PlayerMoveRight");
+            animator.Play("PlayerMoveRight");
         }
 
         if (Input.GetKey("up") || Input.GetKey("w") || Input.GetKey("left") || Input.GetKey("a")
@@ -55,5 +54,6 @@ public class player_moves : MonoBehaviour {
         }
         //Debug.Log("mov_f: " + moveDirection);
         controller.Move(endMoveDirection * Time.deltaTime);
+
     }
 }
