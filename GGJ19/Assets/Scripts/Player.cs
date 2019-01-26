@@ -186,8 +186,6 @@ public class Player : MonoBehaviour {
             Debug.Log("hp: " + playerHP);
         }
 
-        cd_damage = 3.0f;
-
     }
 
     public bool takeDamage(int amount) {
