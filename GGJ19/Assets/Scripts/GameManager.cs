@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager GM;
     private Player player;
     private EnemyManager enemManager;
+    private Canvas canvas;
 
     //Key, Rope, Boia, Machado, Rock;
     private bool[] items = new bool[5];
@@ -37,6 +38,10 @@ public class GameManager : MonoBehaviour {
     public void setEnemyManager(EnemyManager enemManager) {
         this.enemManager = enemManager;
     }
+    
+    public void setCanvas(Canvas canvas) {
+        this.canvas = canvas;
+    }
 
     public void activateSpawner() {
         GameManager.GM.enemManager.startSpawn();
@@ -44,6 +49,21 @@ public class GameManager : MonoBehaviour {
 
     public void deactivateSpawner() {
         GameManager.GM.enemManager.stopSpawn();
+    }
+    
+    public void damagePlayer(int ammount) {
+        GameManager.GM.player.takeDamage(ammount);
+        GameManager.GM.canvas.takeHeart();
+    }
+
+    public void healPlayer(int ammount) {
+        GameManager.GM.player.giveHeal(ammount);
+        GameManager.GM.canvas.giveHeart();
+    }
+
+    public int playerHP() {
+
+        return GameManager.GM.player.HP();
     }
 
     public void addItem(int index) {
