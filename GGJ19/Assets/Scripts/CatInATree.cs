@@ -33,7 +33,6 @@ public class CatInATree : MonoBehaviour {
         }
     }
 
-
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player") && !saved) {
             var rope = transform.GetChild(2);
