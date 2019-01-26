@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
     public void setEnemyManager(EnemyManager enemManager) {
         this.enemManager = enemManager;
     }
-    
+
     public void setCanvas(Canvas canvas) {
         this.canvas = canvas;
     }
@@ -50,19 +50,18 @@ public class GameManager : MonoBehaviour {
     public void deactivateSpawner() {
         GameManager.GM.enemManager.stopSpawn();
     }
-    
+
     public void damagePlayer(int ammount) {
-        if(GameManager.GM.player.takeDamage(ammount))
+        if (GameManager.GM.player.takeDamage(ammount))
             GameManager.GM.canvas.takeHeart();
     }
 
     public void healPlayer(int ammount) {
-        GameManager.GM.player.giveHeal(ammount);
-        GameManager.GM.canvas.giveHeart();
+        player.giveHeal(ammount);
+        canvas.giveHeart();
     }
 
     public int playerHP() {
-
         return GameManager.GM.player.HP();
     }
 
