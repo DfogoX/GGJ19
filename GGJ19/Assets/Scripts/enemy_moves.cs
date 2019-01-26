@@ -26,10 +26,11 @@ public class enemy_moves : MonoBehaviour {
     {
         source = GetComponent<AudioSource>();
         rigid = GetComponent<Rigidbody2D>();
-        rend = GetComponent<SpriteRenderer>();
+        rend = GetComponentInChildren<SpriteRenderer>();
         coll = GetComponent<Collider2D>();
-        
-        source.PlayOneShot(soundSpawn,70);
+
+        source.clip = soundSpawn;
+        source.Play();
     }
 
     // Update is called once per frame
@@ -53,7 +54,8 @@ public class enemy_moves : MonoBehaviour {
  
         }
         else {
-            source.PlayOneShot(soundAttack, 70);
+            source.clip = soundAttack;
+            source.Play();
             if (dist < RunDist)
                 rigid.MovePosition(rigid.position +  moves * 1/4 * MoveSpeed * Time.deltaTime);
             else {

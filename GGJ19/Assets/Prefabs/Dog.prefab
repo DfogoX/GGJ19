@@ -109,7 +109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8288704457008870801}
   - component: {fileID: 7157891087245581699}
-  - component: {fileID: 7740866934378829056}
+  - component: {fileID: 4100145963933823623}
   m_Layer: 0
   m_Name: Dog
   m_TagString: Ally
@@ -148,7 +148,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.099999994, y: 0.099999964}
   m_Size: {x: 0.7, y: 0.7}
   m_Direction: 0
---- !u!114 &7740866934378829056
+--- !u!114 &4100145963933823623
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,3 +160,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0653672251918804887d59d654a72516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Item: {fileID: 6355154957620465256, guid: ebd52a688edbb7c48aeae714f539cb1a, type: 3}
