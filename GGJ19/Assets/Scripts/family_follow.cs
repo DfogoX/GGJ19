@@ -7,10 +7,10 @@ using Vector3 = UnityEngine.Vector3;
 
 public class family_follow : MonoBehaviour {
     // Start is called before the first frame update
-    public GameObject _Item;
+    public GameObject itemo;
     private Animator animator;
     private bool caught = false;
-
+    private bool itemGiven = false;
     void Start() {
         animator = GetComponentInChildren<Animator>();
     }
@@ -56,11 +56,15 @@ public class family_follow : MonoBehaviour {
         if (other.gameObject.CompareTag("Player") && !caught) {
             animator.Play("Idle");
             caught = true;
-            Invoke("Spawn", 0);
         }
+        else if (other.gameObject.CompareTag("Home") && !itemGiven) {
+            Invoke("Spawn", 0);
+            itemGiven = true;
+        }
+
     }
 
     void Spawn() {
-        Instantiate(_Item, transform.position, Quaternion.identity);
+        Instantiate(itemo, transform.position, Quaternion.identity);
     }
 }
