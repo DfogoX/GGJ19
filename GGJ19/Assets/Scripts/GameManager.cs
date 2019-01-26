@@ -52,8 +52,8 @@ public class GameManager : MonoBehaviour {
     }
     
     public void damagePlayer(int ammount) {
-        GameManager.GM.player.takeDamage(ammount);
-        GameManager.GM.canvas.takeHeart();
+        if(GameManager.GM.player.takeDamage(ammount))
+            GameManager.GM.canvas.takeHeart();
     }
 
     public void healPlayer(int ammount) {
