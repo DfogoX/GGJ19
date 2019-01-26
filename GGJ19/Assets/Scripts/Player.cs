@@ -29,22 +29,22 @@ public class Player : MonoBehaviour {
 
         if (Input.GetKeyDown("up") || Input.GetKeyDown("w")) {
             moveDirection = new Vector2(0.0f, 1.0f);
-            playAnim("PlayerMoveUp");
+            playAnim("MoveUp");
         }
 
         if (Input.GetKeyDown("left") || Input.GetKeyDown("a")) {
             moveDirection = new Vector2(-1.0f, 0.0f);
-            playAnim("PlayerMoveLeft");
+            playAnim("MoveLeft");
         }
 
         if (Input.GetKeyDown("down") || Input.GetKeyDown("s")) {
             moveDirection = new Vector2(0.0f, -1.0f);
-            playAnim("PlayerMoveDown");
+            playAnim("MoveDown");
         }
 
         if (Input.GetKeyDown("right") || Input.GetKeyDown("d")) {
             moveDirection = new Vector2(1.0f, 0.0f);
-            playAnim("PlayerMoveRight");
+            playAnim("MoveRight");
         }
 
         if (Input.GetKey("up") || Input.GetKey("w") || Input.GetKey("left") || Input.GetKey("a")
@@ -69,7 +69,7 @@ public class Player : MonoBehaviour {
 
         var endMoveDirection = moveDirection * currSpeed;
         if (endMoveDirection == Vector2.zero) {
-            playAnim("PlayerIdle");
+            playAnim("Idle");
             stamina += restore * Time.deltaTime;
             if (stamina > 100.0f) {
                 stamina = 100.0f;
