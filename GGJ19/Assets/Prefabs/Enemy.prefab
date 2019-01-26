@@ -49,9 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundSpawn: {fileID: 8300000, guid: 0903339ebe194a54490ee0aa3b961cae, type: 3}
   soundAttack: {fileID: 8300000, guid: bc8eaa707aa79894189eae94f4542d70, type: 3}
-  MoveSpeed: 4
+  MoveSpeed: 3
   MaxDist: 5
-  MinDist: 1
+  MinDist: 2
   RunDist: 0.1
 --- !u!70 &6777791262540348664
 CapsuleCollider2D:
