@@ -76,8 +76,8 @@ public class enemy_moves : MonoBehaviour {
         if (other.gameObject.CompareTag("Player")) {
             touched = true;
             coll.enabled = false;
+            GameManager.GM.damagePlayer(1);
         }
 
-        GameManager.GM.damagePlayer(1);
     }
 }

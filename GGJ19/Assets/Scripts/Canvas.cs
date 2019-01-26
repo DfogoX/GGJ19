@@ -13,8 +13,8 @@ public class Canvas : MonoBehaviour {
     }
     
     public void takeHeart() {
-        if (lastHeartIndex < transform.childCount) {
-            var child = this.transform.GetChild(lastHeartIndex);
+        if (lastHeartIndex < transform.GetChild(0).childCount) {
+            var child = this.transform.GetChild(0).GetChild(lastHeartIndex);
             var childImg = child.transform.GetChild(0);
             var img = childImg.GetComponent<Image>();
             img.enabled = false;
@@ -25,11 +25,11 @@ public class Canvas : MonoBehaviour {
 
     public void giveHeart() {
         if (lastHeartIndex > 0 ) {
-            var child = this.transform.GetChild(lastHeartIndex-1);
+            var child = this.transform.GetChild(0).GetChild(lastHeartIndex-1);
             var childImg = child.transform.GetChild(0);
             var img = childImg.GetComponent<Image>();
             img.enabled = true;
-            lastHeartIndex--;    
+            lastHeartIndex--;
         }
     }
 }
