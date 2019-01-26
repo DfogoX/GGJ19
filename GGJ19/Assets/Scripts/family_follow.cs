@@ -8,6 +8,7 @@ using Vector3 = UnityEngine.Vector3;
 public class family_follow : MonoBehaviour {
     // Start is called before the first frame update
     public GameObject itemo;
+    public int itemIndex;
     private Animator animator;
     private bool caught = false;
     private bool itemGiven = false;
@@ -60,7 +61,8 @@ public class family_follow : MonoBehaviour {
         else if (other.gameObject.CompareTag("Home") && !itemGiven) {
             Invoke("Spawn", 0);
             itemGiven = true;
-        }
+            GameManager.GM.addItem(itemIndex);
+        } 
 
     }
 
