@@ -10,11 +10,14 @@ public class Player : MonoBehaviour {
     public float stamina = 100.0f;
     public float moveX = 0f;
     public float moveY = 0f;
+    public RuntimeAnimatorController waterController;
+    private RuntimeAnimatorController defaultController;
 
     private void Start() {
         GameManager.GM.setPlayer(this);
         rigid = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -124,14 +127,31 @@ public class Player : MonoBehaviour {
 
         animator.speed = currSpeed / speed;
         
-        
-        
-        
         rigid.MovePosition(rigid.position + endMoveDirection * Time.deltaTime);
     }
 
     private void playAnim(string animName) {
         animator.Play(animName);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("river")) {
+            var sprOne = transform.GetChild(1);
+            sprOne.GetComponent<SpriteRenderer>().enabled = false;
+            var sprTwo = transform.GetChild(2);
+            sprTwo.GetComponent<SpriteRenderer>().enabled = true;
+            animator = sprTwo.GetComponent<Animator>();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.CompareTag("river")) {
+            var sprOne = transform.GetChild(1);
+            sprOne.GetComponent<SpriteRenderer>().enabled = true;
+            var sprTwo = transform.GetChild(2);
+            sprTwo.GetComponent<SpriteRenderer>().enabled = false;
+            animator = sprOne.GetComponent<Animator>();
+        }        
     }
 
     private void spawning() {
