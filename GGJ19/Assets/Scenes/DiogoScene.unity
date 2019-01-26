@@ -239,6 +239,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1708196473373918936, guid: 746a6b2d8f84f954a8c8df8f2b911bc9,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708196473373918936, guid: 746a6b2d8f84f954a8c8df8f2b911bc9,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708196473373918936, guid: 746a6b2d8f84f954a8c8df8f2b911bc9,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708196473373918936, guid: 746a6b2d8f84f954a8c8df8f2b911bc9,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 746a6b2d8f84f954a8c8df8f2b911bc9, type: 3}
 --- !u!1 &627663947
@@ -405,7 +425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 3710354843424922076, guid: db54d289ecdf1f74095658d318668d7c, type: 3}
-  spawnTime: 5
+  spawnTime: 7
   spawners:
   - {fileID: 94775523}
   - {fileID: 288041683}
