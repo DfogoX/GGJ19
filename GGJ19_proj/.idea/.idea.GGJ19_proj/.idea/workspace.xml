@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47c246cf-b9b3-44d7-82f8-8d7cde1c55be" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ19_proj/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ19_proj/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/NunoScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NunoScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/player_moves.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/player_moves.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/back.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/back.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/front.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/front.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/side.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/side.png.meta" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +20,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/player_moves.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="192">
+              <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
               <folding>
-                <marker date="1548452000197" expanded="true" signature="62:1118" ph="{...}" />
-                <marker date="1548452000197" expanded="true" signature="331:382" ph="{...}" />
-                <marker date="1548452000197" expanded="true" signature="441:1116" ph="{...}" />
+                <marker date="1548465233833" expanded="true" signature="62:1920" ph="{...}" />
+                <marker date="1548465233833" expanded="true" signature="318:438" ph="{...}" />
+                <marker date="1548465233833" expanded="true" signature="497:1918" ph="{...}" />
+                <marker date="1548465233833" expanded="true" signature="608:721" ph="{...}" />
+                <marker date="1548465233833" expanded="true" signature="786:902" ph="{...}" />
+                <marker date="1548465233833" expanded="true" signature="967:1083" ph="{...}" />
+                <marker date="1548465233833" expanded="true" signature="1149:1265" ph="{...}" />
+                <marker date="1548465233833" expanded="true" signature="1463:1505" ph="{...}" />
+                <marker date="1548465233833" expanded="true" signature="1596:1644" ph="{...}" />
+                <marker date="1548465233833" expanded="true" signature="1751:1803" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -32,6 +45,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/player_moves.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/PreFabs/Player.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/NunoScene.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/DiogoScene.unity" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -57,7 +73,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
       <pane id="UnityExplorer">
         <subPane>
           <expand>
@@ -68,17 +87,29 @@
             <path>
               <item name="Project" type="e068e287:UnityExplorerRootNode" />
               <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="PreFabs" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scenes" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
               <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Sprites" type="1045f7f1:UnityExplorerNode" />
             </path>
           </expand>
           <select />
         </subPane>
         <option name="show-hidden-items" value="false" />
       </pane>
-      <pane id="SolutionExplorer">
-        <option name="show-all-files" value="false" />
-      </pane>
-      <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -128,7 +159,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1027000" />
+    <option name="totallyTimeSpent" value="2728000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -140,10 +171,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18283582" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18305598" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -195,11 +226,19 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/player_moves.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="192">
+          <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
           <folding>
-            <marker date="1548452000197" expanded="true" signature="62:1118" ph="{...}" />
-            <marker date="1548452000197" expanded="true" signature="331:382" ph="{...}" />
-            <marker date="1548452000197" expanded="true" signature="441:1116" ph="{...}" />
+            <marker date="1548465233833" expanded="true" signature="62:1920" ph="{...}" />
+            <marker date="1548465233833" expanded="true" signature="318:438" ph="{...}" />
+            <marker date="1548465233833" expanded="true" signature="497:1918" ph="{...}" />
+            <marker date="1548465233833" expanded="true" signature="608:721" ph="{...}" />
+            <marker date="1548465233833" expanded="true" signature="786:902" ph="{...}" />
+            <marker date="1548465233833" expanded="true" signature="967:1083" ph="{...}" />
+            <marker date="1548465233833" expanded="true" signature="1149:1265" ph="{...}" />
+            <marker date="1548465233833" expanded="true" signature="1463:1505" ph="{...}" />
+            <marker date="1548465233833" expanded="true" signature="1596:1644" ph="{...}" />
+            <marker date="1548465233833" expanded="true" signature="1751:1803" ph="{...}" />
           </folding>
         </state>
       </provider>

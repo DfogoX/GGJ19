@@ -10,7 +10,7 @@ public class player_moves : MonoBehaviour {
 
     private void Start() {
         controller = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
