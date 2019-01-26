@@ -47,6 +47,7 @@ public class dog_moves : MonoBehaviour
             animator.Play("DogIdleHappy");
             caught = true;
             Invoke("Spawn",0);
+            GameManager.GM.addItem("Key");
         }
         
     }

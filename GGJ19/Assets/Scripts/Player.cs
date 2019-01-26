@@ -12,6 +12,7 @@ public class Player : MonoBehaviour {
     public float moveY = 0f;
     public RuntimeAnimatorController waterController;
     private RuntimeAnimatorController defaultController;
+    public int playerHP = 5;
 
     private void Start() {
         GameManager.GM.setPlayer(this);
@@ -25,6 +26,8 @@ public class Player : MonoBehaviour {
         move();
 
         spawning();
+
+        damaging();
     }
 
     private void move() {
@@ -155,9 +158,37 @@ public class Player : MonoBehaviour {
     }
 
     private void spawning() {
-        if(Input.GetKey(KeyCode.K))
+        if (Input.GetKey(KeyCode.K))
             GameManager.GM.activateSpawner();
-        if(Input.GetKey(KeyCode.L))
+        if (Input.GetKey(KeyCode.L))
             GameManager.GM.deactivateSpawner();
+    }
+
+    private void damaging() {
+        if (Input.GetKeyDown(KeyCode.C)) {
+            GameManager.GM.damagePlayer(1);
+            Debug.Log("hp: " + playerHP);
+        }
+
+        else if (Input.GetKeyDown(KeyCode.C)) {
+            GameManager.GM.damagePlayer(2);
+            Debug.Log("hp: " + playerHP);
+        }
+        else if (Input.GetKeyDown(KeyCode.B)) {
+            GameManager.GM.healPlayer(1);
+            Debug.Log("hp: " + playerHP);
+        }
+    }
+
+    public void takeDamage(int amount) {
+        playerHP -= amount;
+    }
+    
+    public void giveHeal(int amount) {
+        playerHP += amount;
+    }
+
+    public int HP() {
+        return this.playerHP;
     }
 }

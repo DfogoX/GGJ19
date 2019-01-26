@@ -34,7 +34,8 @@ public class CatInATree : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.CompareTag("Player") && !saved) {
+        if (other.gameObject.CompareTag("Player") && !saved
+            && GameManager.GM.hasItem("Rope")) {
             var rope = transform.GetChild(2);
             rope.GetComponent<SpriteRenderer>().enabled = true;
             animator.Play("Saved");
