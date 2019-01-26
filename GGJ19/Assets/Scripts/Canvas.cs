@@ -11,17 +11,10 @@ public class Canvas : MonoBehaviour {
     {
         GameManager.GM.setCanvas(this);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public void takeHeart() {
         if (lastHeartIndex < transform.childCount) {
             var child = this.transform.GetChild(lastHeartIndex);
-            Debug.Log(lastHeartIndex);
             var childImg = child.transform.GetChild(0);
             var img = childImg.GetComponent<Image>();
             img.enabled = false;
@@ -31,8 +24,7 @@ public class Canvas : MonoBehaviour {
     }
 
     public void giveHeart() {
-        if (lastHeartIndex >= 0 ) {
-            Debug.Log(lastHeartIndex-1);
+        if (lastHeartIndex > 0 ) {
             var child = this.transform.GetChild(lastHeartIndex-1);
             var childImg = child.transform.GetChild(0);
             var img = childImg.GetComponent<Image>();

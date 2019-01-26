@@ -612,7 +612,6 @@ MonoBehaviour:
   stamina: 100
   moveX: 0
   moveY: 0
-  waterController: {fileID: 0}
 --- !u!50 &1708196473373918936
 Rigidbody2D:
   serializedVersion: 4

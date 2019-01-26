@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: grass
+  m_Name: gateOpen
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 5d1f1e5dd44de2841be5fbdd172c6a72, type: 3}
-  m_Color: {r: 0.7075472, g: 0.6775098, b: 0.6775098, a: 1}
+  m_Sprite: {fileID: 21300000, guid: c0dfa8ef0e398394a91e2b84ce66ceec, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0
