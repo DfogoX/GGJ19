@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
     public float speed = 6.0f;
     public float sprintSpeed = 12.0f;
     public float stamina = 100.0f;
+    public float moveX = 0f;
+    public float moveY = 0f;
 
     private void Start() {
         GameManager.GM.setPlayer(this);
@@ -28,32 +30,76 @@ public class Player : MonoBehaviour {
         var restore = 15.0f;
 
         if (Input.GetKeyDown("up") || Input.GetKeyDown("w")) {
-            moveDirection = new Vector2(0.0f, 1.0f);
+            moveY += 1f;
             playAnim("MoveUp");
         }
 
-        if (Input.GetKeyDown("left") || Input.GetKeyDown("a")) {
-            moveDirection = new Vector2(-1.0f, 0.0f);
-            playAnim("MoveLeft");
+        if (Input.GetKeyUp("up") || Input.GetKeyUp("w")) {
+            moveY -= 1f;
+            if (moveY != 0f) playAnim("MoveDown");
+            else
+            {
+                if (moveX > 0f) playAnim("MoveRight");
+                else if (moveX < 0f) playAnim("MoveLeft");
+            }
         }
 
-        if (Input.GetKeyDown("down") || Input.GetKeyDown("s")) {
-            moveDirection = new Vector2(0.0f, -1.0f);
+        if (Input.GetKeyDown("down") || Input.GetKeyDown("s"))
+        {
+            moveY -= 1f;
             playAnim("MoveDown");
         }
 
-        if (Input.GetKeyDown("right") || Input.GetKeyDown("d")) {
-            moveDirection = new Vector2(1.0f, 0.0f);
+        if (Input.GetKeyUp("down") || Input.GetKeyUp("s"))
+        {
+            moveY += 1f;
+            if (moveY != 0f) playAnim("MoveUp");
+            else
+            {
+                if (moveX > 0f) playAnim("MoveRight");
+                else if (moveX < 0f) playAnim("MoveLeft");
+            }
+        }
+
+        if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
+        {
+            moveX += 1f;
             playAnim("MoveRight");
         }
 
-        if (Input.GetKey("up") || Input.GetKey("w") || Input.GetKey("left") || Input.GetKey("a")
-            || Input.GetKey("down") || Input.GetKey("s") || Input.GetKey("right") || Input.GetKey("d")) {
+        if (Input.GetKeyUp("right") || Input.GetKeyUp("d"))
+        {
+            moveX -= 1f;
+            if (moveX != 0f) playAnim("MoveLeft");
+            else
+            {
+                if (moveY > 0f) playAnim("MoveUp");
+                else if (moveY < 0f) playAnim("MoveDown");
+            }
+        }
+
+        if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
+        {
+            moveX -= 1f;
+            playAnim("MoveLeft");
+        }
+
+        if (Input.GetKeyUp("left") || Input.GetKeyUp("a"))
+        {
+            moveX += 1f;
+            if (moveX != 0f) playAnim("MoveRight");
+            else
+            {
+                if (moveY > 0f) playAnim("MoveUp");
+                else if (moveY < 0f) playAnim("MoveDown");
+            }
+        }
+
+        if (moveX != 0f || moveY != 0f) {
             currSpeed = speed;
         }
-        else {
-            moveDirection = Vector2.zero;
-        }
+
+        moveDirection = new Vector2(moveX, moveY);
 
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {
             currSpeed = sprintSpeed;
@@ -67,7 +113,7 @@ public class Player : MonoBehaviour {
             }
         }
 
-        var endMoveDirection = moveDirection * currSpeed;
+        var endMoveDirection = moveDirection.normalized * currSpeed;
         if (endMoveDirection == Vector2.zero) {
             playAnim("Idle");
             stamina += restore * Time.deltaTime;
