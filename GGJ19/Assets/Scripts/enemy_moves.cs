@@ -12,6 +12,7 @@ public class enemy_moves : MonoBehaviour {
     private AudioSource source;
 
     public AudioClip soundSpawn;
+    public AudioClip soundAttack;
     public int MoveSpeed = 4;
     public float MaxDist = 4;
     public float MinDist = 2;
@@ -52,6 +53,7 @@ public class enemy_moves : MonoBehaviour {
  
         }
         else {
+            source.PlayOneShot(soundAttack, 70);
             if (dist < RunDist)
                 rigid.MovePosition(rigid.position +  moves * 1/4 * MoveSpeed * Time.deltaTime);
             else {
