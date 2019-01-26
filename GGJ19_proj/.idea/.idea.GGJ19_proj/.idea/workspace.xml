@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47c246cf-b9b3-44d7-82f8-8d7cde1c55be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ19_proj/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ19_proj/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/PlayerMoveLeft.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/PlayerMoveLeft.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/PlayerMoveRight.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/PlayerMoveRight.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/NunoScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NunoScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/player_moves.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/player_moves.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/back.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/back.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/front.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/front.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/side.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/side.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/grass.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/interiorHouse.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/player_moves.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
+            <state relative-caret-position="202">
+              <caret line="43" column="9" lean-forward="true" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
               <folding>
                 <marker date="1548465233833" expanded="true" signature="62:1920" ph="{...}" />
                 <marker date="1548465233833" expanded="true" signature="318:438" ph="{...}" />
@@ -64,9 +64,9 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="240" />
-    <option name="y" value="126" />
+    <option name="y" value="127" />
     <option name="width" value="1440" />
-    <option name="height" value="775" />
+    <option name="height" value="774" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -161,7 +161,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2728000" />
+    <option name="totallyTimeSpent" value="3617000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -174,7 +174,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18305598" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -228,8 +227,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/player_moves.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
+        <state relative-caret-position="202">
+          <caret line="43" column="9" lean-forward="true" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
           <folding>
             <marker date="1548465233833" expanded="true" signature="62:1920" ph="{...}" />
             <marker date="1548465233833" expanded="true" signature="318:438" ph="{...}" />
