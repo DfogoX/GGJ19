@@ -40,7 +40,6 @@ public class enemy_moves : MonoBehaviour {
           rigid.MovePosition(rigid.position +  moves * MoveSpeed* Time.deltaTime);
             if (dist <= MaxDist)
             {
-                Debug.Log("run, max)");
                 rigid.MovePosition(rigid.position +  moves * MoveSpeed*2 * Time.deltaTime);
             }
  
@@ -53,7 +52,6 @@ public class enemy_moves : MonoBehaviour {
                 if (cd < 0.1f)
                     cd = 1.5f;
             }
-            
             cd -= Time.deltaTime;
         }
     }
