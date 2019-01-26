@@ -12,6 +12,7 @@ public class PaiFollow : MonoBehaviour {
     private Animator animator;
     private bool caught = false;
     private bool itemGiven = false;
+    public float speed;
 
     void Start() {
         animator = GetComponentInChildren<Animator>();
@@ -25,7 +26,7 @@ public class PaiFollow : MonoBehaviour {
             var direction = Vector3.zero;
             if (dist > 1) {
                 direction = Vector3.Normalize(playerTransform.position - transform.position);
-                transform.position = transform.position + direction * Time.deltaTime;
+                transform.position = transform.position + direction * Time.deltaTime * speed;
             }
 
             if (direction != Vector3.zero) {

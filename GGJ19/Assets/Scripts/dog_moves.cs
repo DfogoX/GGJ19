@@ -11,6 +11,8 @@ public class dog_moves : MonoBehaviour
     public GameObject _Item;
     private Animator animator;
     private bool caught = false;
+    public float speed = 3.0f;
+
     void Start() {
         animator = GetComponentInChildren<Animator>();
     }
@@ -24,7 +26,7 @@ public class dog_moves : MonoBehaviour
             var direction = Vector3.zero;
             if (dist > 1) {
                 direction = Vector3.Normalize(playerTransform.position - transform.position);
-                transform.position = transform.position + direction * Time.deltaTime;
+                transform.position = transform.position + direction * Time.deltaTime * speed;
             }
 
             if (direction != Vector3.zero) {

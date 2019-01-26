@@ -9,7 +9,7 @@ public class ObstacleScript : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         _hasItem = false;
-        _collider = GetComponent<CompositeCollider2D>();
+        _collider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
