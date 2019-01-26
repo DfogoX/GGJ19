@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.WSA;
+using Application = UnityEngine.Application;
 
 public class Player : MonoBehaviour {
     
@@ -9,6 +11,7 @@ public class Player : MonoBehaviour {
     private SpriteRenderer rend;
     private Vector2 moveDirection = Vector2.zero;
     private float cd_damage = 0.5f;
+    private String lastAnim = "Idle";
     
     public float speed = 6.0f;
     public float sprintSpeed = 12.0f;
@@ -40,7 +43,8 @@ public class Player : MonoBehaviour {
         var currSpeed = 0.0f;
         var decay = 20.0f;
         var restore = 15.0f;
-
+        
+        playAnim(lastAnim);
         if (Input.GetKeyDown("up") || Input.GetKeyDown("w")) {
             moveY += 1f;
             playAnim("MoveUp");
@@ -143,6 +147,7 @@ public class Player : MonoBehaviour {
 
     private void playAnim(string animName) {
         animator.Play(animName);
+        lastAnim = animName;
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("river")) {
