@@ -131,6 +131,8 @@ public class Player : MonoBehaviour {
         animator.speed = currSpeed / speed;
         
         rigid.MovePosition(rigid.position + endMoveDirection * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
     }
 
     private void playAnim(string animName) {
