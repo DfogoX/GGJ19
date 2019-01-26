@@ -136,14 +136,30 @@ public class Player : MonoBehaviour {
 
         animator.speed = currSpeed / speed;
         
-        
-        
-        
         rigid.MovePosition(rigid.position + endMoveDirection * Time.deltaTime);
     }
 
     private void playAnim(string animName) {
         animator.Play(animName);
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("river")) {
+            var sprOne = transform.GetChild(1);
+            sprOne.GetComponent<SpriteRenderer>().enabled = false;
+            var sprTwo = transform.GetChild(2);
+            sprTwo.GetComponent<SpriteRenderer>().enabled = true;
+            animator = sprTwo.GetComponent<Animator>();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.CompareTag("river")) {
+            var sprOne = transform.GetChild(1);
+            sprOne.GetComponent<SpriteRenderer>().enabled = true;
+            var sprTwo = transform.GetChild(2);
+            sprTwo.GetComponent<SpriteRenderer>().enabled = false;
+            animator = sprOne.GetComponent<Animator>();
+        }        
     }
 //SPAWNING
     private void spawning() {

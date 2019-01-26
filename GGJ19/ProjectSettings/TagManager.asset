@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ally
   - Home
+  - river
   layers:
   - Default
   - TransparentFX
