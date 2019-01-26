@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
     public static GameManager GM;
-    public Player player;
-
+    private Player player;
+    private EnemyManager enemManager;
+    
     private void Awake() {
         if( GM != null )
             Destroy( GM );
@@ -16,11 +17,26 @@ public class GameManager : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        
     }
 
     public Transform findPlayer() {
         return GM.player.transform;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public void setEnemyManager(EnemyManager enemManager) {
+        this.enemManager = enemManager;
+    }
+
+    public void activateSpawner() {
+        GameManager.GM.enemManager.startSpawn();
+    }
+    
+    public void deactivateSpawner() {
+        GameManager.GM.enemManager.stopSpawn();
     }
 
 }

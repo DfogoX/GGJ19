@@ -10,15 +10,16 @@ public class Player : MonoBehaviour {
     public float stamina = 100.0f;
 
     private void Start() {
+        GameManager.GM.setPlayer(this);
         rigid = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
-        GameManager.GM.player = this;
     }
 
     // Update is called once per frame
     void Update() {
         move();
-        //Debug.Log("mov_f: " + moveDirection);
+
+        spawning();
     }
 
     private void move() {
@@ -81,5 +82,12 @@ public class Player : MonoBehaviour {
 
     private void playAnim(string animName) {
         animator.Play(animName);
+    }
+
+    private void spawning() {
+        if(Input.GetKey(KeyCode.K))
+            GameManager.GM.activateSpawner();
+        if(Input.GetKey(KeyCode.L))
+            GameManager.GM.deactivateSpawner();
     }
 }
