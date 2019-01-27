@@ -6,20 +6,21 @@ using UnityEngine.WSA;
 using Application = UnityEngine.Application;
 
 public class Player : MonoBehaviour {
-    
     private Rigidbody2D rigid;
     private Animator animator;
     private SpriteRenderer rend;
     private Vector2 moveDirection = Vector2.zero;
     private float cd_damage = 0.5f;
-    private float cd_heal = 1.0f;
+    public float cd_heal = 5.0f;
     private String lastAnim = "Idle";
-    
+
     public float speed = 5.0f;
     public float sprintSpeed = 10.0f;
     public float startStamina = 100.0f;
     public float currStamina;
+
     public Slider sliderStamina;
+
     //public int ola;
     public float moveX = 0f;
     public float moveY = 0f;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour {
     private bool immune;
 
     private bool Dead;
+    private bool healing;
 
     private void Start() {
         immune = false;
@@ -45,14 +47,13 @@ public class Player : MonoBehaviour {
         spawning();
 
         damaging();
-
     }
 
     private void move() {
         var currSpeed = 0.0f;
         var decay = 20.0f;
         var restore = 15.0f;
-        
+
         playAnim(lastAnim);
         if (Input.GetKeyDown("up") || Input.GetKeyDown("w")) {
             moveY += 1f;
@@ -62,59 +63,49 @@ public class Player : MonoBehaviour {
         if (Input.GetKeyUp("up") || Input.GetKeyUp("w")) {
             moveY -= 1f;
             if (moveY != 0f) playAnim("MoveDown");
-            else
-            {
+            else {
                 if (moveX > 0f) playAnim("MoveRight");
                 else if (moveX < 0f) playAnim("MoveLeft");
             }
         }
 
-        if (Input.GetKeyDown("down") || Input.GetKeyDown("s"))
-        {
+        if (Input.GetKeyDown("down") || Input.GetKeyDown("s")) {
             moveY -= 1f;
             playAnim("MoveDown");
         }
 
-        if (Input.GetKeyUp("down") || Input.GetKeyUp("s"))
-        {
+        if (Input.GetKeyUp("down") || Input.GetKeyUp("s")) {
             moveY += 1f;
             if (moveY != 0f) playAnim("MoveUp");
-            else
-            {
+            else {
                 if (moveX > 0f) playAnim("MoveRight");
                 else if (moveX < 0f) playAnim("MoveLeft");
             }
         }
 
-        if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
-        {
+        if (Input.GetKeyDown("right") || Input.GetKeyDown("d")) {
             moveX += 1f;
             playAnim("MoveRight");
         }
 
-        if (Input.GetKeyUp("right") || Input.GetKeyUp("d"))
-        {
+        if (Input.GetKeyUp("right") || Input.GetKeyUp("d")) {
             moveX -= 1f;
             if (moveX != 0f) playAnim("MoveLeft");
-            else
-            {
+            else {
                 if (moveY > 0f) playAnim("MoveUp");
                 else if (moveY < 0f) playAnim("MoveDown");
             }
         }
 
-        if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
-        {
+        if (Input.GetKeyDown("left") || Input.GetKeyDown("a")) {
             moveX -= 1f;
             playAnim("MoveLeft");
         }
 
-        if (Input.GetKeyUp("left") || Input.GetKeyUp("a"))
-        {
+        if (Input.GetKeyUp("left") || Input.GetKeyUp("a")) {
             moveX += 1f;
             if (moveX != 0f) playAnim("MoveRight");
-            else
-            {
+            else {
                 if (moveY > 0f) playAnim("MoveUp");
                 else if (moveY < 0f) playAnim("MoveDown");
             }
@@ -130,7 +121,6 @@ public class Player : MonoBehaviour {
             currSpeed = sprintSpeed;
             if (moveDirection != Vector2.zero) {
                 currStamina -= decay * Time.deltaTime;
-
             }
 
             if (currStamina <= 0.0f) {
@@ -143,15 +133,16 @@ public class Player : MonoBehaviour {
         if (endMoveDirection == Vector2.zero) {
             playAnim("Idle");
         }
-        
+
         currStamina += restore * Time.deltaTime / (currSpeed + 1);
         if (currStamina > startStamina) {
             currStamina = startStamina;
         }
+
         GameManager.GM.changeSliderValue(currStamina);
-        
+
         animator.speed = currSpeed / speed;
-        
+
         rigid.MovePosition(rigid.position + endMoveDirection * Time.deltaTime);
 
         if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
@@ -161,6 +152,7 @@ public class Player : MonoBehaviour {
         animator.Play(animName);
         lastAnim = animName;
     }
+
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("river")) {
             var sprOne = transform.GetChild(1);
@@ -178,8 +170,9 @@ public class Player : MonoBehaviour {
             var sprTwo = transform.GetChild(2);
             sprTwo.GetComponent<SpriteRenderer>().enabled = false;
             animator = sprOne.GetComponent<Animator>();
-        }        
+        }
     }
+
 //SPAWNING
     private void spawning() {
         if (Input.GetKey(KeyCode.K))
@@ -187,22 +180,18 @@ public class Player : MonoBehaviour {
         if (Input.GetKey(KeyCode.L))
             GameManager.GM.deactivateSpawner();
     }
+
 //DAMAGING
     private void damaging() {
         if (Input.GetKeyDown(KeyCode.C)) {
             GameManager.GM.damagePlayer(1);
-            Debug.Log("hp: " + playerHP);
         }
-
-        else if (Input.GetKeyDown(KeyCode.C)) {
+        else if (Input.GetKeyDown(KeyCode.V)) {
             GameManager.GM.damagePlayer(2);
-            Debug.Log("hp: " + playerHP);
         }
         else if (Input.GetKeyDown(KeyCode.B)) {
             GameManager.GM.healPlayer(1);
-            Debug.Log("hp: " + playerHP);
         }
-
     }
 
     public bool takeDamage(int amount) {
@@ -223,15 +212,24 @@ public class Player : MonoBehaviour {
         rend.color = Color.white;
     }
 
-    public void giveHeal(int amount) {
-        rend.color = Color.green;
-        playerHP += amount;
-        StartCoroutine(HealCooldown());
+    public bool giveHeal(int amount) {
+        bool result = false;
+        if (!healing) {
+            healing = true;
+            rend.color = Color.green;
+            playerHP += amount;
+            StartCoroutine(HealCooldown());
+            result = true;
+        }
+
+        return result;
     }
-    
+
     private IEnumerator HealCooldown() {
+        Debug.Log("cooldown heal: " + cd_heal);
         yield return new WaitForSeconds(cd_heal);
         rend.color = Color.white;
+        healing = false;
     }
 
 

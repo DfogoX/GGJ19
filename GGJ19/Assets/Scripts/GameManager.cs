@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager GM;
     private Player player;
     private EnemyManager enemManager;
-    private Canvas canvas;
+    private CanvasUI canvas;
     private bool spawning = false;
 
     //Key, Rope, Boia, Machado, Rock;
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
         this.enemManager = enemManager;
     }
 
-    public void setCanvas(Canvas canvas) {
+    public void setCanvas(CanvasUI canvas) {
         this.canvas = canvas;
     }
 
@@ -62,15 +62,15 @@ public class GameManager : MonoBehaviour {
 
     public void damagePlayer(int ammount) {
         if (GameManager.GM.player.takeDamage(ammount)) {
-            Debug.Log("take heart");
             GameManager.GM.canvas.takeHeart();
         }
-
     }
 
     public void healPlayer(int ammount) {
-        player.giveHeal(ammount);
-        canvas.giveHeart();
+        bool healed = player.giveHeal(ammount);
+        if (healed) {
+            canvas.giveHeart();
+        }
     }
 
     public int playerHP() {
@@ -80,8 +80,8 @@ public class GameManager : MonoBehaviour {
     public void changeSliderValue(float value) {
         canvas.changeSliderVal(value);
     }
-    
-    
+
+
     public void addItem(int index) {
         if (index < 5 && index >= 0) {
             items[index] = true;
