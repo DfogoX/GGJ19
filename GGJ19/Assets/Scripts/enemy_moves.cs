@@ -28,7 +28,7 @@ public class enemy_moves : MonoBehaviour {
         animator = GetComponentInChildren<Animator>();
         source.clip = soundSpawn;
         source.Play();
-        StartCoroutine(FadeOut(3f));
+        StartCoroutine(FadeOut(1f, 2f));
     }
 
     // Update is called once per frame
@@ -84,8 +84,9 @@ public class enemy_moves : MonoBehaviour {
         }
     }
 
-    public IEnumerator FadeOut(float FadeTime)
+    public IEnumerator FadeOut(float WaitTime, float FadeTime)
     {
+        yield return new WaitForSeconds(WaitTime);
         float startVolume = source.volume;
 
         while (source.volume > 0)

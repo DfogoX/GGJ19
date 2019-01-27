@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
-using UnityEngine.WSA;
 using Application = UnityEngine.Application;
 
 [RequireComponent(typeof(AudioSource))]
