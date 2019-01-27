@@ -1,32 +1,42 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public static GameManager GM;
     private Player player;
+    private Transform dog;
+    private SceneHandler sceneHandler;
     private Family family;
     private EnemyManager enemManager;
     private CanvasUI canvas;
     private bool spawning = false;
+    private int currentHouseLevel;
+    private bool inside;
+    
 
     //Key, Rope, Boia, Machado, Rock;
     private bool[] items = new bool[5];
 
     private void Awake() {
-        if (GM != null)
-            Destroy(GM);
-        else
+        //if (GM != null)
+        //    Destroy(GM);
+        //else
             GM = this;
         DontDestroyOnLoad(GM);
     }
 
     // Start is called before the first frame update
     void Start() {
+        
         for (int i = 0; i < 5; i++) {
             items[i] = false;
         }
+
+        currentHouseLevel = 0;
     }
 
     public Transform findPlayer() {
@@ -36,11 +46,13 @@ public class GameManager : MonoBehaviour {
     public void setPlayer(Player player) {
         this.player = player;
     }
-    
-    public void setFamily(Family family1) {
-        this.family = family;
-    }
 
+    public void setFamily(Family family1) {
+        this.family = family1;
+    }
+    public void setSceneHandler(SceneHandler scene) {
+        this.sceneHandler = scene;
+    }
     public void setEnemyManager(EnemyManager enemManager) {
         this.enemManager = enemManager;
     }
@@ -152,14 +164,39 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public Transform getDoggo() {
-        return this.family.getDog();
+    private void reset() {
+        Debug.Log("End");
+        canvas.BlackScreen();
+        player.relive();
+        dog.GetComponentInChildren<Animator>().Play("DogIdleHappy");
+        family.respawn();
+    }
+
+    private IEnumerator waitForReset() {
+        yield return new WaitForSeconds(2);
+        reset();
+    }
+
+    private IEnumerator waitForBlackScreen() {
+        yield return new WaitForSeconds(5);
+        canvas.BlackScreen();
+        StartCoroutine(waitForReset());
     }
 
     public void restart() {
         this.player.respawn();
-        this.family.getDog();
+        //dog.position = Vector3.left / 2;
+        dog.position = Vector3.left / 2 + new Vector3(0, -5, 0);
+        dog.GetComponentInChildren<Animator>().Play("DogCryingSad");
+        family.stop();
+        StartCoroutine(waitForBlackScreen());
     }
 
+    public void setDog(Transform d) {
+        dog = d;
+    }
 
+    public void addTimmy(family_follow timmy) {
+        family.addTimmy(timmy);
+    }
 }

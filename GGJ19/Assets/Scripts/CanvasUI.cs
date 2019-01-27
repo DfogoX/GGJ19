@@ -7,6 +7,7 @@ public class CanvasUI : MonoBehaviour {
 
     private int lastHeartIndex = 0;
     private Transform inventory;
+    private Transform blackScreen;
 
     public Sprite fullHeart;
     public Sprite emptyHeart;
@@ -15,6 +16,7 @@ public class CanvasUI : MonoBehaviour {
     {
         GameManager.GM.setCanvas(this);
         inventory = this.transform.GetChild(2);
+        blackScreen = this.transform.GetChild(4);
         deactivateAll();
     }
     
@@ -57,6 +59,9 @@ public class CanvasUI : MonoBehaviour {
         if (index > 0) {
             inventory.GetChild(index-1).GetComponent<Image>().enabled = false;
         }
+    }
+    public void BlackScreen() {
+        blackScreen.GetComponent<Image>().enabled = !blackScreen.GetComponent<Image>().enabled;
     }
     
 }

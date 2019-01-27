@@ -43,6 +43,7 @@ public class Player : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (Dead) return;
         move();
 
         spawning();
@@ -54,18 +55,20 @@ public class Player : MonoBehaviour {
         
         GameManager.GM.restart();
         
-        /* dog.transform.position =  Vector3.left /2
-         * dog.transform.GetComponentInChildren<Animator>().Play("DogCryingSad");
-         */
-        //new WaitForSeconds(cd_damage);
-        //GameManager.GM.respawn();
     }
 
     public void respawn() {
-        this.transform.position = Vector3.zero;
+        
+        this.transform.position = new Vector3(0,-5,0);
+        this.transform.GetComponentInChildren<Animator>().Play("PlayerDead");
+        Dead = true;
     }
-    
-    
+
+    public void relive() {
+        this.transform.GetComponentInChildren<Animator>().Play("Idle");
+        Dead = false;
+    }
+
     private void move() {
         var currSpeed = 0.0f;
         var decay = 20.0f;

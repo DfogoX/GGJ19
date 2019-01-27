@@ -19,6 +19,7 @@ public class dog_moves : MonoBehaviour {
 
     void Start() {
         animator = GetComponentInChildren<Animator>();
+        GameManager.GM.setDog(this.transform);
     }
 
     // Update is called once per frame
