@@ -28,6 +28,7 @@ public class enemy_moves : MonoBehaviour {
         animator = GetComponentInChildren<Animator>();
         source.clip = soundSpawn;
         source.Play();
+        StartCoroutine(FadeOut(3f));
     }
 
     // Update is called once per frame
@@ -61,8 +62,8 @@ public class enemy_moves : MonoBehaviour {
 
             }
             else {
-                source.clip = soundAttack;
-                source.Play();
+                //source.clip = soundAttack;
+                //source.Play();
                 rigid.MovePosition(rigid.position + moves * 2 * MoveSpeed * Time.deltaTime);
                 if (cd < 0.1f) {
                     cd = 1.5f;
@@ -79,5 +80,20 @@ public class enemy_moves : MonoBehaviour {
             coll.enabled = false;
             GameManager.GM.damagePlayer(1);
         }
+    }
+
+    public IEnumerator FadeOut(float FadeTime)
+    {
+        float startVolume = source.volume;
+
+        while (source.volume > 0)
+        {
+            source.volume -= startVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+
+        source.Stop();
+        source.volume = startVolume;
     }
 }

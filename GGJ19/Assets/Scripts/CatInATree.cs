@@ -49,6 +49,6 @@ public class CatInATree : MonoBehaviour {
         var familyFollow = instantiate.GetComponent<family_follow>();
         familyFollow.WayPoints = WayPoints;
         familyFollow.NumOfWayPoints = NumOfWayPoints;
-        
+        GameManager.GM.addTimmy(familyFollow);
     }
 }
