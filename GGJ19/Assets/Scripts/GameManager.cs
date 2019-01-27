@@ -202,9 +202,7 @@ public class GameManager : MonoBehaviour {
         canvas.BlackScreen();
         this.player.respawn();
         fullRestorePlayer();
-        //dog.position = Vector3.left / 2;
-        dog.position = Vector3.left / 2 + new Vector3(0, -5, 0);
-        dog.GetComponentInChildren<Animator>().Play("DogCryingSad");
+        dog.GetComponent<dog_moves>().respawn();
         family.stop();
         StartCoroutine(waitForBlackScreen1());
     }

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
+using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
 public class dog_moves : MonoBehaviour {
@@ -16,11 +15,23 @@ public class dog_moves : MonoBehaviour {
     public Transform[] WayPoints;
     private int currWayPoint = 0;
     private bool keyGiven = false;
-    private AudioSource source;
+    private AudioSource[] sources;
+
     void Start() {
         animator = GetComponentInChildren<Animator>();
         GameManager.GM.setDog(this.transform);
-        source = GetComponent<AudioSource>();
+        sources = GetComponents<AudioSource>();
+
+        StartCoroutine(RandomBark());
+    }
+
+    private IEnumerator RandomBark() {
+        if (!GameManager.GM.spawningMobs()) {
+            sources[0].Play();
+        }
+
+        yield return new WaitForSeconds(Random.Range(3.0f, 10.0f));
+        StartCoroutine(RandomBark());
     }
 
     // Update is called once per frame
@@ -44,6 +55,7 @@ public class dog_moves : MonoBehaviour {
             else {
                 currWayPoint++;
                 animator.Play("DogIdleHappy");
+                sources[1].Play();
             }
         }
 
@@ -55,6 +67,7 @@ public class dog_moves : MonoBehaviour {
 
         if (currWayPoint > NumOfWayPoints) {
             animator.Play("DogIdleHappy");
+            sources[1].Play();
         }
     }
 
@@ -62,6 +75,7 @@ public class dog_moves : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player") && !caught) {
             animator.Play("DogIdleHappy");
+            sources[1].Play();
             caught = true;
         }
     }
@@ -71,7 +85,12 @@ public class dog_moves : MonoBehaviour {
     }
 
     public void respawn() {
-        this.transform.position = Vector3.left;
-        this.transform.GetComponentInChildren<Animator>().Play("DogCryingSad");
+        transform.position = Vector3.left / 2 + new Vector3(0, -5, 0);
+        GetComponentInChildren<Animator>().Play("DogCryingSad");
+        Invoke(nameof(Sad), 2.0f);
+    }
+
+    void Sad() {
+        sources[2].Play();
     }
 }
