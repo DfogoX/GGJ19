@@ -16,13 +16,20 @@ public class PaiFollow : MonoBehaviour {
     public float NumOfWayPoints;
     public Transform[] WayPoints;
     private int currWayPoint = 0;
-    
+    private Vector3 initPos;
+    private bool stopmovement = false;
     void Start() {
         animator = GetComponentInChildren<Animator>();
+        initPos = transform.position;
     }
 
+    public void stop() {
+        stopmovement = true;
+        transform.GetComponentInChildren<Animator>().Play("Idle");
+    }
     // Update is called once per frame
     void Update() {
+        if (stopmovement) return;
         if (caught && !itemGiven) {
             Transform playerTransform = GameManager.GM.findPlayer();
             var dist = Vector3.Distance(transform.position, playerTransform.position);
@@ -122,5 +129,14 @@ public class PaiFollow : MonoBehaviour {
 
     void Spawn() {
         Instantiate(itemo, transform.position, Quaternion.identity);
+    }
+    
+    public void respawn() {
+        if (!itemGiven) {
+            transform.position = initPos;
+            caught = false;
+        }
+        transform.GetComponentInChildren<Animator>().Play("Idle");
+        stopmovement = false;
     }
 }
