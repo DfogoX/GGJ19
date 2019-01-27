@@ -69,7 +69,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 6c2c55578210a0546bf070831271e9e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b020aa3eced79149ac398d4fb3f037e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -163,3 +163,5 @@ MonoBehaviour:
   itemo: {fileID: 3114703622109987333, guid: 7a3f0d93e7a8e8c4eaf3c4cec4147053, type: 3}
   itemIndex: 1
   speed: 3
+  NumOfWayPoints: 0
+  WayPoints: []

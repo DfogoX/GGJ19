@@ -16,10 +16,11 @@ public class dog_moves : MonoBehaviour {
     public Transform[] WayPoints;
     private int currWayPoint = 0;
     private bool keyGiven = false;
-
+    private AudioSource source;
     void Start() {
         animator = GetComponentInChildren<Animator>();
         GameManager.GM.setDog(this.transform);
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
