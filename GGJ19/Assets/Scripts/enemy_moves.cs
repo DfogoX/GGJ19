@@ -35,7 +35,6 @@ public class enemy_moves : MonoBehaviour {
         Transform playerTransform = GameManager.GM.findPlayer();
         var dist = Vector2.Distance(transform.position, playerTransform.position);
         if (touched || !GameManager.GM.spawningMobs()) {
-            Debug.Log("inside");
             rigid.MovePosition(rigid.position + moves * MoveSpeed * Time.deltaTime);
             if(!rend.isVisible)
             Destroy((this.gameObject));

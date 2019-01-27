@@ -46,13 +46,11 @@ public class GameManager : MonoBehaviour {
 
     public void activateSpawner() {
         GameManager.GM.enemManager.startSpawn();
-        Debug.Log("yes spawn");
         spawning = true;
     }
 
     public void deactivateSpawner() {
         GameManager.GM.enemManager.stopSpawn();
-        Debug.Log("no spawn");
         spawning = false;
     }
 
