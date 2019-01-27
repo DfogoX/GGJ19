@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
 
     //Key, Rope, Boia, Machado, Rock;
     private bool[] items = new bool[5];
+    [SerializeField] private GameObject endImage;
 
     private void Awake() {
         //if (GM != null)
@@ -92,11 +93,6 @@ public class GameManager : MonoBehaviour {
         player.getFullHP();
         canvas.giveFullHearts();
     }
-
-    public int playerHP() {
-        return GameManager.GM.player.HP();
-    }
-
     public void changeSliderValue(float value) {
         canvas.changeSliderVal(value);
     }
@@ -108,7 +104,7 @@ public class GameManager : MonoBehaviour {
             canvas.activate(index);
             sources[1].Play();
         }
-        if(index == 4) GameObject.Find("EndObject").SetActive(true);
+        if(index == 4)endImage.SetActive(true);
 
     }
 
@@ -142,7 +138,7 @@ public class GameManager : MonoBehaviour {
             case "Food":
                 index = 4;
                 items[4] = true;
-                GameObject.Find("EndObject").SetActive(true);
+                endImage.SetActive(true);
                 break;
         }
 
