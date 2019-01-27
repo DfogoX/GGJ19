@@ -10,7 +10,6 @@ public class GardenEvents : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("spawn. " + spawning);
         if (other.gameObject.CompareTag("Player") && spawning) {
             GameManager.GM.deactivateSpawner();
             spawning = !spawning;
