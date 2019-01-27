@@ -33,6 +33,7 @@ public class Player : MonoBehaviour {
     private void Start() {
         immune = false;
         GameManager.GM.setPlayer(this);
+        GameManager.GM.setPlayer(this);
         rigid = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         rend = GetComponentInChildren<SpriteRenderer>();
@@ -49,6 +50,22 @@ public class Player : MonoBehaviour {
         damaging();
     }
 
+    void DIE() {
+        
+        GameManager.GM.restart();
+        
+        /* dog.transform.position =  Vector3.left /2
+         * dog.transform.GetComponentInChildren<Animator>().Play("DogCryingSad");
+         */
+        //new WaitForSeconds(cd_damage);
+        //GameManager.GM.respawn();
+    }
+
+    public void respawn() {
+        this.transform.position = Vector3.zero;
+    }
+    
+    
     private void move() {
         var currSpeed = 0.0f;
         var decay = 20.0f;
@@ -200,6 +217,9 @@ public class Player : MonoBehaviour {
             playerHP -= amount;
             immune = true;
             StartCoroutine(ImmunityCooldown());
+            if (playerHP < 1) {
+                DIE();
+            }
             return true;
         }
 

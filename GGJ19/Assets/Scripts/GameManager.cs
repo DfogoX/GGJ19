@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
     public static GameManager GM;
     private Player player;
+    private Family family;
     private EnemyManager enemManager;
     private CanvasUI canvas;
     private bool spawning = false;
@@ -34,6 +35,10 @@ public class GameManager : MonoBehaviour {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+    
+    public void setFamily(Family family1) {
+        this.family = family;
     }
 
     public void setEnemyManager(EnemyManager enemManager) {
@@ -148,4 +153,15 @@ public class GameManager : MonoBehaviour {
             default: return false;
         }
     }
+
+    public Transform getDoggo() {
+        return this.family.getDog();
+    }
+
+    public void restart() {
+        this.player.respawn();
+        this.family.getDog();
+    }
+
+
 }

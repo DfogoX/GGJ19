@@ -67,4 +67,9 @@ public class dog_moves : MonoBehaviour {
     void Spawn() {
         Instantiate(_Item, transform.position, Quaternion.identity);
     }
+
+    public void respawn() {
+        this.transform.position = Vector3.left;
+        this.transform.GetComponentInChildren<Animator>().Play("DogCryingSad");
+    }
 }
