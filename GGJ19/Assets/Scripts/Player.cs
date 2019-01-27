@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 using UnityEngine.WSA;
 using Application = UnityEngine.Application;
 
@@ -13,13 +14,18 @@ public class Player : MonoBehaviour {
     private float cd_damage = 0.5f;
     private String lastAnim = "Idle";
     
-    public float speed = 6.0f;
-    public float sprintSpeed = 12.0f;
-    public float stamina = 100.0f;
+    public float speed = 5.0f;
+    public float sprintSpeed = 10.0f;
+    public float startStamina = 100.0f;
+    public float currStamina;
+    public Slider sliderStamina;
+    //public int ola;
     public float moveX = 0f;
     public float moveY = 0f;
     private int playerHP = 5;
     private bool immune;
+
+    private bool Dead;
 
     private void Start() {
         immune = false;
@@ -27,6 +33,8 @@ public class Player : MonoBehaviour {
         rigid = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         rend = GetComponentInChildren<SpriteRenderer>();
+
+        currStamina = startStamina;
     }
 
     // Update is called once per frame
@@ -120,11 +128,12 @@ public class Player : MonoBehaviour {
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {
             currSpeed = sprintSpeed;
             if (moveDirection != Vector2.zero) {
-                stamina -= decay * Time.deltaTime;
+                currStamina -= decay * Time.deltaTime;
+
             }
 
-            if (stamina <= 0.0f) {
-                stamina = -1.0f;
+            if (currStamina <= 0.0f) {
+                currStamina = 0.0f;
                 currSpeed = speed;
             }
         }
@@ -132,12 +141,14 @@ public class Player : MonoBehaviour {
         var endMoveDirection = moveDirection.normalized * currSpeed;
         if (endMoveDirection == Vector2.zero) {
             playAnim("Idle");
-            stamina += restore * Time.deltaTime;
-            if (stamina > 100.0f) {
-                stamina = 100.0f;
-            }
         }
-
+        
+        currStamina += restore * Time.deltaTime / (currSpeed + 1);
+        if (currStamina > startStamina) {
+            currStamina = startStamina;
+        }
+        GameManager.GM.changeSliderValue(currStamina);
+        
         animator.speed = currSpeed / speed;
         
         rigid.MovePosition(rigid.position + endMoveDirection * Time.deltaTime);

@@ -68,6 +68,11 @@ public class GameManager : MonoBehaviour {
         return GameManager.GM.player.HP();
     }
 
+    public void changeSliderValue(float value) {
+        canvas.changeSliderVal(value);
+    }
+    
+    
     public void addItem(int index) {
         if (index < 5 && index >= 0) {
             items[index] = true;
