@@ -11,6 +11,7 @@ public class Family : MonoBehaviour {
     private bool hasTimmy = false;
     private PaiFollow pai;
 
+    public Transform[] Parents;
     // Start is called before the first frame update
     void Start() {
         GameManager.GM.setFamily(this);
@@ -47,5 +48,31 @@ public class Family : MonoBehaviour {
     public void addTimmy(family_follow timmy) {
         filho = timmy;
         hasTimmy = true;
+    }
+
+    public void changeParent(int index, int level) {
+        switch (index) {
+            case 0:
+                mae.transform.SetParent(Parents[level], true);
+                Debug.Log("Mae: " + level);
+                break;
+            case 1:
+                filho.transform.SetParent(Parents[level], true);
+                Debug.Log("Filho: " + level);
+
+                break;
+            case 2:
+                pai.transform.SetParent(Parents[level], true);
+                Debug.Log("Pai: " + level);
+                break;
+            case 3:
+                avo.transform.SetParent(Parents[level], true);
+                Debug.Log("Avo: " + level);
+                break;
+            case 4:
+                avoo.transform.SetParent(Parents[level], true);
+                Debug.Log("Avoo: " + level);
+                break;
+        }
     }
 }

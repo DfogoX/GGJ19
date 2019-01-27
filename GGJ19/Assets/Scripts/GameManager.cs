@@ -217,8 +217,13 @@ public class GameManager : MonoBehaviour {
 
     public void increaseHouseLevel() {
         currentHouseLevel++;
-        if (currentHouseLevel > 5) currentHouseLevel = 5;
-        Debug.Log(currentHouseLevel);
+        if (currentHouseLevel >= 5) currentHouseLevel = 5;
+        for (int i = 1; i < currentHouseLevel; i++) {
+            familyChangeParent(i - 1, currentHouseLevel-1);
+        }
+        if (currentHouseLevel == 5) {
+            familyChangeParent(4, currentHouseLevel-1);
+        }
     }
     
     public bool isPlayerDead() {
@@ -227,5 +232,9 @@ public class GameManager : MonoBehaviour {
 
     public int getHouseLevel() {
         return currentHouseLevel;
+    }
+
+    public void familyChangeParent(int index, int level) {
+        family.changeParent(index,level);
     }
 }

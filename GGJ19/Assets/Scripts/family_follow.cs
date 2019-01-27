@@ -67,8 +67,9 @@ public class family_follow : MonoBehaviour {
         if (itemGiven && currWayPoint < NumOfWayPoints) {
             var dist = Vector3.Distance(transform.position, WayPoints[currWayPoint].position);
             var direction = Vector3.zero;
+            if (dist > 0.05f) {          
                 direction = Vector3.Normalize(WayPoints[currWayPoint].position - transform.position);
-
+            }
             if (direction != Vector3.zero) {
                 //Moving more horizontaly
                 if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y)) {
