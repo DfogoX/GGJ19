@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Family : MonoBehaviour {
-
     private family_follow mae;
     private family_follow avo;
     private family_follow avoo;
@@ -11,22 +10,14 @@ public class Family : MonoBehaviour {
 
     private bool hasTimmy = false;
     private PaiFollow pai;
-    
+
     // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log("aafam");
+    void Start() {
         GameManager.GM.setFamily(this);
         pai = this.transform.GetChild(0).GetComponent<PaiFollow>();
         mae = this.transform.GetChild(1).GetComponent<family_follow>();
         avoo = this.transform.GetChild(2).GetComponent<family_follow>();
         avo = this.transform.GetChild(3).GetComponent<family_follow>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        GameManager.GM.setFamily(this);
     }
 
     public Transform getFamily() {
@@ -41,7 +32,6 @@ public class Family : MonoBehaviour {
         if (hasTimmy) {
             filho.respawn();
         }
-
     }
 
     public void stop() {
@@ -58,5 +48,4 @@ public class Family : MonoBehaviour {
         filho = timmy;
         hasTimmy = true;
     }
-
 }

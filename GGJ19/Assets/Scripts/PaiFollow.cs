@@ -129,7 +129,7 @@ public class PaiFollow : MonoBehaviour {
             var sprTwo = transform.GetChild(1);
             sprTwo.GetComponent<SpriteRenderer>().enabled = false;
             animator = sprOne.GetComponent<Animator>();
-            GameManager.GM.currentHouseLevel++;
+            GameManager.GM.increaseHouseLevel();
         }
     }
 

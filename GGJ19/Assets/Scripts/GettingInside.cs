@@ -21,10 +21,10 @@ public class GettingInside : MonoBehaviour {
 //        }
 
         if (GameManager.GM.inside) {
-            Debug.Log(GameManager.GM.currentHouseLevel);
+            Debug.Log(GameManager.GM.getHouseLevel());
             transform.GetChild(0).gameObject.SetActive(false);
             for (int i = 1; i < transform.childCount; i++) {
-                if (i == GameManager.GM.currentHouseLevel) {
+                if (i == GameManager.GM.getHouseLevel()) {
                     transform.GetChild(i).gameObject.SetActive(true);
                 }
                 else {

@@ -11,7 +11,7 @@ public class Player : MonoBehaviour {
     private SpriteRenderer rend;
     private Vector2 moveDirection = Vector2.zero;
     private float cd_damage = 0.5f;
-    public float cd_heal = 5.0f;
+    public float cd_heal = 1.5f;
     private String lastAnim = "Idle";
 
     public float speed = 5.0f;
@@ -75,7 +75,7 @@ public class Player : MonoBehaviour {
     private void move() {
         var currSpeed = 0.0f;
         var decay = 20.0f;
-        var restore = 15.0f;
+        var restore = 20.0f;
 
         playAnim(lastAnim);
         if (Input.GetKeyDown("up") || Input.GetKeyDown("w")) {
@@ -242,7 +242,6 @@ public class Player : MonoBehaviour {
         bool result = false;
         if (!healing) {
             healing = true;
-            rend.color = Color.green;
             playerHP += amount;
             StartCoroutine(HealCooldown());
             result = true;
@@ -252,9 +251,7 @@ public class Player : MonoBehaviour {
     }
 
     private IEnumerator HealCooldown() {
-        Debug.Log("cooldown heal: " + cd_heal);
         yield return new WaitForSeconds(cd_heal);
-        rend.color = Color.white;
         healing = false;
     }
 

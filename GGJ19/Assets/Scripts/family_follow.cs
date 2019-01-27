@@ -65,11 +65,9 @@ public class family_follow : MonoBehaviour {
 
         //Start Waypoints if any exist
         if (itemGiven && currWayPoint < NumOfWayPoints) {
-            Debug.Log("Waypoint" + currWayPoint);
             var dist = Vector3.Distance(transform.position, WayPoints[currWayPoint].position);
             var direction = Vector3.zero;
                 direction = Vector3.Normalize(WayPoints[currWayPoint].position - transform.position);
-                transform.position = transform.position + direction * Time.deltaTime * speed;
 
             if (direction != Vector3.zero) {
                 //Moving more horizontaly
@@ -88,6 +86,7 @@ public class family_follow : MonoBehaviour {
                     else {
                         animator.Play("MoveDown");
                     }
+                transform.position = transform.position + direction * Time.deltaTime * speed;
                 }
             }else {
                 currWayPoint++;

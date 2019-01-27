@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
     private EnemyManager enemManager;
     private CanvasUI canvas;
     private bool spawning = false;
-    public int currentHouseLevel;
+    private int currentHouseLevel;
     public bool inside;
 
 
@@ -216,10 +216,16 @@ public class GameManager : MonoBehaviour {
     }
 
     public void increaseHouseLevel() {
-        currentHouseLevel = Mathf.Clamp(currentHouseLevel++, 1, 5);
+        currentHouseLevel++;
+        if (currentHouseLevel > 5) currentHouseLevel = 5;
+        Debug.Log(currentHouseLevel);
     }
     
     public bool isPlayerDead() {
         return player.isDead();
+    }
+
+    public int getHouseLevel() {
+        return currentHouseLevel;
     }
 }
