@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour {
     private EnemyManager enemManager;
     private CanvasUI canvas;
     private bool spawning = false;
+    private int currentHouseLevel;
+    private bool inside;
+    
 
     //Key, Rope, Boia, Machado, Rock;
     private bool[] items = new bool[5];
@@ -28,9 +31,12 @@ public class GameManager : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        
         for (int i = 0; i < 5; i++) {
             items[i] = false;
         }
+
+        currentHouseLevel = 0;
     }
 
     public Transform findPlayer() {

@@ -18,8 +18,8 @@ public class CutDownTree : MonoBehaviour {
             if (GameManager.GM.hasItem(3)) {
                 sr.sprite = openDoor;
                 Destroy(GetComponent<PolygonCollider2D>());
-                gameObject.AddComponent<PolygonCollider2D>();
-                StartCoroutine(DropLogs());
+                Instantiate(item, transform.position, Quaternion.identity);
+                Destroy(gameObject);
             }
         }
     }
