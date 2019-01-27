@@ -12,6 +12,7 @@ public class Player : MonoBehaviour {
     private SpriteRenderer rend;
     private Vector2 moveDirection = Vector2.zero;
     private float cd_damage = 0.5f;
+    private float cd_heal = 1.0f;
     private String lastAnim = "Idle";
     
     public float speed = 5.0f;
@@ -223,8 +224,16 @@ public class Player : MonoBehaviour {
     }
 
     public void giveHeal(int amount) {
+        rend.color = Color.green;
         playerHP += amount;
+        StartCoroutine(HealCooldown());
     }
+    
+    private IEnumerator HealCooldown() {
+        yield return new WaitForSeconds(cd_heal);
+        rend.color = Color.white;
+    }
+
 
     public int HP() {
         return this.playerHP;

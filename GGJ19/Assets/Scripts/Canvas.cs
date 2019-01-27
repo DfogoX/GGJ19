@@ -40,4 +40,5 @@ public class Canvas : MonoBehaviour {
         var slide = this.transform.GetChild(1).GetComponent<Slider>();
         slide.value = value;
     }
+    
 }
