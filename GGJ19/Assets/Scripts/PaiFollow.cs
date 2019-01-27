@@ -18,6 +18,7 @@ public class PaiFollow : MonoBehaviour {
     private int currWayPoint = 0;
     private Vector3 initPos;
     private bool stopmovement = false;
+
     void Start() {
         animator = GetComponentInChildren<Animator>();
         initPos = transform.position;
@@ -27,6 +28,7 @@ public class PaiFollow : MonoBehaviour {
         stopmovement = true;
         transform.GetComponentInChildren<Animator>().Play("Idle");
     }
+
     // Update is called once per frame
     void Update() {
         if (stopmovement) return;
@@ -62,11 +64,12 @@ public class PaiFollow : MonoBehaviour {
                 animator.Play("Idle");
             }
         }
+
         if (itemGiven && currWayPoint < NumOfWayPoints) {
             var dist = Vector3.Distance(transform.position, WayPoints[currWayPoint].position);
             var direction = Vector3.zero;
-                direction = Vector3.Normalize(WayPoints[currWayPoint].position - transform.position);
-                transform.position = transform.position + direction * Time.deltaTime * speed;
+            direction = Vector3.Normalize(WayPoints[currWayPoint].position - transform.position);
+            transform.position = transform.position + direction * Time.deltaTime * speed;
 
             if (direction != Vector3.zero) {
                 //Moving more horizontaly
@@ -86,10 +89,12 @@ public class PaiFollow : MonoBehaviour {
                         animator.Play("MoveDown");
                     }
                 }
-            }else {
+            }
+            else {
                 currWayPoint++;
             }
         }
+
         if (currWayPoint >= NumOfWayPoints) {
             animator.Play("Idle");
         }
@@ -114,7 +119,7 @@ public class PaiFollow : MonoBehaviour {
             var sprTwo = transform.GetChild(1);
             sprTwo.GetComponent<SpriteRenderer>().enabled = true;
             animator = sprTwo.GetComponent<Animator>();
-        } 
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
@@ -124,18 +129,20 @@ public class PaiFollow : MonoBehaviour {
             var sprTwo = transform.GetChild(1);
             sprTwo.GetComponent<SpriteRenderer>().enabled = false;
             animator = sprOne.GetComponent<Animator>();
+            GameManager.GM.currentHouseLevel++;
         }
     }
 
     void Spawn() {
         Instantiate(itemo, transform.position, Quaternion.identity);
     }
-    
+
     public void respawn() {
         if (!itemGiven) {
             transform.position = initPos;
             caught = false;
         }
+
         transform.GetComponentInChildren<Animator>().Play("Idle");
         stopmovement = false;
     }

@@ -14,9 +14,9 @@ public class GameManager : MonoBehaviour {
     private EnemyManager enemManager;
     private CanvasUI canvas;
     private bool spawning = false;
-    private int currentHouseLevel;
-    private bool inside;
-    
+    public int currentHouseLevel;
+    public bool inside;
+
 
     //Key, Rope, Boia, Machado, Rock;
     private bool[] items = new bool[5];
@@ -25,18 +25,17 @@ public class GameManager : MonoBehaviour {
         //if (GM != null)
         //    Destroy(GM);
         //else
-            GM = this;
+        GM = this;
         DontDestroyOnLoad(GM);
     }
 
     // Start is called before the first frame update
     void Start() {
-        
         for (int i = 0; i < 5; i++) {
             items[i] = false;
         }
 
-        currentHouseLevel = 0;
+        currentHouseLevel = 1;
     }
 
     public Transform findPlayer() {
@@ -50,9 +49,11 @@ public class GameManager : MonoBehaviour {
     public void setFamily(Family family1) {
         this.family = family1;
     }
+
     public void setSceneHandler(SceneHandler scene) {
         this.sceneHandler = scene;
     }
+
     public void setEnemyManager(EnemyManager enemManager) {
         this.enemManager = enemManager;
     }
@@ -135,6 +136,7 @@ public class GameManager : MonoBehaviour {
                 items[4] = true;
                 break;
         }
+
         canvas.activate(index);
     }
 
@@ -198,5 +200,9 @@ public class GameManager : MonoBehaviour {
 
     public void addTimmy(family_follow timmy) {
         family.addTimmy(timmy);
+    }
+
+    public void increaseHouseLevel() {
+        currentHouseLevel = Mathf.Clamp(currentHouseLevel++, 1, 5);
     }
 }

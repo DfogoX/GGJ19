@@ -117,6 +117,7 @@ public class family_follow : MonoBehaviour {
             Invoke("Spawn", 0);
             itemGiven = true;
             GameManager.GM.addItem(itemIndex);
+            GameManager.GM.increaseHouseLevel();
         }
     }
 
