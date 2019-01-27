@@ -5,10 +5,12 @@ using UnityEngine.Experimental.UIElements;
 using UnityEngine.WSA;
 using Application = UnityEngine.Application;
 
+[RequireComponent(typeof(AudioSource))]
 public class Player : MonoBehaviour {
     private Rigidbody2D rigid;
     private Animator animator;
     private SpriteRenderer rend;
+    private AudioSource source;
     private Vector2 moveDirection = Vector2.zero;
     private float cd_damage = 0.5f;
     public float cd_heal = 5.0f;
@@ -37,7 +39,7 @@ public class Player : MonoBehaviour {
         rigid = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         rend = GetComponentInChildren<SpriteRenderer>();
-
+        source = GetComponentInChildren<AudioSource>();
         currStamina = startStamina;
     }
 
@@ -221,6 +223,7 @@ public class Player : MonoBehaviour {
         if (!immune) {
             rend.color = Color.red;
             playerHP -= amount;
+            source.Play();
             immune = true;
             StartCoroutine(ImmunityCooldown());
             if (playerHP < 1) {
