@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d1608a1eba2c146bc95f29c0b95db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundSpawn: {fileID: 8300000, guid: 0903339ebe194a54490ee0aa3b961cae, type: 3}
-  soundAttack: {fileID: 8300000, guid: bc8eaa707aa79894189eae94f4542d70, type: 3}
+  soundSpawn: {fileID: 8300000, guid: b40af1bcbde162441aa267771dff62dd, type: 3}
+  soundAttack: {fileID: 0}
   MoveSpeed: 3
   MaxDist: 5
   MinDist: 2
