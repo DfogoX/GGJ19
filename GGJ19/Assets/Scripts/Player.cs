@@ -65,6 +65,7 @@ public class Player : MonoBehaviour {
         Dead = true;
         moveX = 0f;
         moveY = 0f;
+        playerHP = 5;
         currStamina = startStamina;
     }
 
