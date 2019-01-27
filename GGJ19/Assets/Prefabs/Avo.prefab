@@ -63,6 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemo: {fileID: 3262034936306417740, guid: 8c62f7ca614b4de49a4428166df35154, type: 3}
   itemIndex: 4
+  speed: 2
 --- !u!1 &8500970205314581839
 GameObject:
   m_ObjectHideFlags: 0

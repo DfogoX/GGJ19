@@ -9,22 +9,17 @@ public class OpenDoor : MonoBehaviour {
 
     private SpriteRenderer sr;
 
-    private PolygonCollider2D pc;
     // Start is called before the first frame update
     void Start() {
         sr = GetComponent<SpriteRenderer>();
-        pc = GetComponent<PolygonCollider2D>();
-    }
-
-    // Update is called once per frame
-    void Update() {
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Player")) {
             if (GameManager.GM.hasItem(0)) {
                 sr.sprite = openDoor;
-                
+                Destroy(GetComponent<PolygonCollider2D>());
+                gameObject.AddComponent<PolygonCollider2D>();
             }
         }
     }

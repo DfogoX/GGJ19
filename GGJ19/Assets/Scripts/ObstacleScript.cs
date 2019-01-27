@@ -14,15 +14,11 @@ public class ObstacleScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Y)) {
-            _hasItem = true;
-        }
-
-        if (_hasItem) {
-            Debug.Log("river is now trigger");
-            Debug.Log(_collider.name);
-            
-            _collider.isTrigger = true;
+        if (!_hasItem) {
+            if (GameManager.GM.hasItem("Boia")) {
+                _collider.isTrigger = true;
+                _hasItem = true;
+            }
         }
     }
 }

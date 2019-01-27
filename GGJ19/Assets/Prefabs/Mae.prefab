@@ -162,3 +162,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemo: {fileID: 3114703622109987333, guid: 7a3f0d93e7a8e8c4eaf3c4cec4147053, type: 3}
   itemIndex: 1
+  speed: 3
