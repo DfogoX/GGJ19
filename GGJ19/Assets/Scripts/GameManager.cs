@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour {
     private bool spawning = false;
     private int currentHouseLevel;
     public bool inside;
-
+    private AudioSource[] sources;
 
     //Key, Rope, Boia, Machado, Rock;
     private bool[] items = new bool[5];
@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour {
         }
 
         currentHouseLevel = 1;
+        sources = GetComponents<AudioSource>();
     }
 
     public Transform findPlayer() {
@@ -107,11 +108,13 @@ public class GameManager : MonoBehaviour {
         if (index < 5 && index >= 0) {
             items[index] = true;
             canvas.activate(index);
+            sources[1].Play();
         }
     }
 
     public void addItem(String item) {
         var index = -1;
+        sources[1].Play();
         switch (item) {
             case "Key":
             case "Chave":
@@ -188,7 +191,8 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(1);
         canvas.BlackScreen();
         StartCoroutine(waitForBlackScreen());
-    }   
+    }
+
     private IEnumerator waitForBlackScreen() {
         yield return new WaitForSeconds(3);
         canvas.BlackScreen();
@@ -217,10 +221,10 @@ public class GameManager : MonoBehaviour {
 
     public void increaseHouseLevel() {
         currentHouseLevel++;
-        if (currentHouseLevel > 5) currentHouseLevel = 5;
+        if (currentHouseLevel >= 5) currentHouseLevel = 5;
         Debug.Log(currentHouseLevel);
     }
-    
+
     public bool isPlayerDead() {
         return player.isDead();
     }
