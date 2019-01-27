@@ -15,11 +15,11 @@ public class CutDownTree : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Player")) {
-            if (GameManager.GM.hasItem(0)) {
+            if (GameManager.GM.hasItem(3)) {
                 sr.sprite = openDoor;
                 Destroy(GetComponent<PolygonCollider2D>());
-                gameObject.AddComponent<PolygonCollider2D>();
-                StartCoroutine(DropLogs());
+                Instantiate(item, transform.position, Quaternion.identity);
+                Destroy(gameObject);
             }
         }
     }
@@ -28,5 +28,6 @@ public class CutDownTree : MonoBehaviour {
         yield return new WaitForSeconds(timeTillDrop);
         Instantiate(item, transform.position, Quaternion.identity);
         Destroy(gameObject);
+        GameManager.GM.addItem(4);
     }
 }

@@ -33,6 +33,8 @@ public class enemy_moves : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if(GameManager.GM.isPlayerDead())
+            Destroy(this.gameObject);
         Transform playerTransform = GameManager.GM.findPlayer();
         var dist = Vector2.Distance(transform.position, playerTransform.position);
         if (touched || !GameManager.GM.spawningMobs()) {
