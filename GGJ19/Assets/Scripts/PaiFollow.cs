@@ -31,6 +31,7 @@ public class PaiFollow : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        Debug.Log("Pai Position: " + transform.position);
         if (stopmovement) return;
         if (caught && !itemGiven) {
             Transform playerTransform = GameManager.GM.findPlayer();
@@ -68,9 +69,9 @@ public class PaiFollow : MonoBehaviour {
         if (itemGiven && currWayPoint < NumOfWayPoints) {
             var dist = Vector3.Distance(transform.position, WayPoints[currWayPoint].position);
             var direction = Vector3.zero;
-            direction = Vector3.Normalize(WayPoints[currWayPoint].position - transform.position);
-            transform.position = transform.position + direction * Time.deltaTime * speed;
-
+            if (dist > 0.02f) {          
+                direction = Vector3.Normalize(WayPoints[currWayPoint].position - transform.position);
+            }           
             if (direction != Vector3.zero) {
                 //Moving more horizontaly
                 if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y)) {
@@ -93,6 +94,7 @@ public class PaiFollow : MonoBehaviour {
             else {
                 currWayPoint++;
             }
+            transform.position = transform.position + direction * Time.deltaTime * speed;
         }
 
         if (currWayPoint >= NumOfWayPoints) {
@@ -102,8 +104,6 @@ public class PaiFollow : MonoBehaviour {
 
 
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("DAD");
-
         if (other.gameObject.CompareTag("Player") && !caught) {
             animator.Play("Idle");
             caught = true;
@@ -112,6 +112,7 @@ public class PaiFollow : MonoBehaviour {
             Invoke("Spawn", 0);
             itemGiven = true;
             GameManager.GM.addItem(itemIndex);
+            GameManager.GM.increaseHouseLevel();
         }
         else if (other.CompareTag("river")) {
             var sprOne = transform.GetChild(0);
@@ -129,7 +130,6 @@ public class PaiFollow : MonoBehaviour {
             var sprTwo = transform.GetChild(1);
             sprTwo.GetComponent<SpriteRenderer>().enabled = false;
             animator = sprOne.GetComponent<Animator>();
-            GameManager.GM.increaseHouseLevel();
         }
     }
 
