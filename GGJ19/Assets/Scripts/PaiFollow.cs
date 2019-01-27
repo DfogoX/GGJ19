@@ -13,14 +13,17 @@ public class PaiFollow : MonoBehaviour {
     private bool caught = false;
     private bool itemGiven = false;
     public float speed;
-
+    public float NumOfWayPoints;
+    public Transform[] WayPoints;
+    private int currWayPoint = 0;
+    
     void Start() {
         animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update() {
-        if (caught) {
+        if (caught && !itemGiven) {
             Transform playerTransform = GameManager.GM.findPlayer();
             var dist = Vector3.Distance(transform.position, playerTransform.position);
             var direction = Vector3.zero;
@@ -52,10 +55,43 @@ public class PaiFollow : MonoBehaviour {
                 animator.Play("Idle");
             }
         }
+        if (itemGiven && currWayPoint < NumOfWayPoints) {
+            var dist = Vector3.Distance(transform.position, WayPoints[currWayPoint].position);
+            var direction = Vector3.zero;
+                direction = Vector3.Normalize(WayPoints[currWayPoint].position - transform.position);
+                transform.position = transform.position + direction * Time.deltaTime * speed;
+
+            if (direction != Vector3.zero) {
+                //Moving more horizontaly
+                if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y)) {
+                    if (direction.x > 0) {
+                        animator.Play("MoveRight");
+                    }
+                    else {
+                        animator.Play("MoveLeft");
+                    }
+                } //Moving more verticaly
+                else {
+                    if (direction.y > 0) {
+                        animator.Play("MoveUp");
+                    }
+                    else {
+                        animator.Play("MoveDown");
+                    }
+                }
+            }else {
+                currWayPoint++;
+            }
+        }
+        if (currWayPoint >= NumOfWayPoints) {
+            animator.Play("Idle");
+        }
     }
 
 
     private void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log("DAD");
+
         if (other.gameObject.CompareTag("Player") && !caught) {
             animator.Play("Idle");
             caught = true;

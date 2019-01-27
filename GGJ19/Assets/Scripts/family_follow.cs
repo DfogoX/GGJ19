@@ -15,7 +15,7 @@ public class family_follow : MonoBehaviour {
     public float speed;
     public float NumOfWayPoints;
     public Transform[] WayPoints;
-    private int currWayPoint;
+    private int currWayPoint = 0;
 
     void Start() {
         animator = GetComponentInChildren<Animator>();
@@ -58,12 +58,11 @@ public class family_follow : MonoBehaviour {
 
         //Start Waypoints if any exist
         if (itemGiven && currWayPoint < NumOfWayPoints) {
+            Debug.Log("Waypoint" + currWayPoint);
             var dist = Vector3.Distance(transform.position, WayPoints[currWayPoint].position);
             var direction = Vector3.zero;
-            if (dist > 1) {
                 direction = Vector3.Normalize(WayPoints[currWayPoint].position - transform.position);
                 transform.position = transform.position + direction * Time.deltaTime * speed;
-            }
 
             if (direction != Vector3.zero) {
                 //Moving more horizontaly
@@ -83,9 +82,11 @@ public class family_follow : MonoBehaviour {
                         animator.Play("MoveDown");
                     }
                 }
+            }else {
+                currWayPoint++;
             }
         }
-        if (currWayPoint > NumOfWayPoints) {
+        if (currWayPoint >= NumOfWayPoints) {
             animator.Play("Idle");
         }
     }

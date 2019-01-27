@@ -13,6 +13,8 @@ public class CatInATree : MonoBehaviour {
     private Animator animator;
     private bool saved = false;
     private bool animationEnded = false;
+    public float NumOfWayPoints;
+    public Transform[] WayPoints;
 
     void Start() {
         animator = GetComponentInChildren<Animator>();
@@ -43,6 +45,10 @@ public class CatInATree : MonoBehaviour {
     }
 
     void Spawn() {
-        Instantiate(Item, transform.position + new Vector3(1.3f,-1.6f,0.0f), Quaternion.identity);
+        var instantiate = Instantiate(Item, transform.position + new Vector3(1.3f,-1.6f,0.0f), Quaternion.identity);
+        var familyFollow = instantiate.GetComponent<family_follow>();
+        familyFollow.WayPoints = WayPoints;
+        familyFollow.NumOfWayPoints = NumOfWayPoints;
+        
     }
 }
