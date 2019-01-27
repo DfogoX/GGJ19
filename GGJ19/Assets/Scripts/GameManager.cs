@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     private Player player;
     private EnemyManager enemManager;
     private Canvas canvas;
+    private bool spawning = false;
 
     //Key, Rope, Boia, Machado, Rock;
     private bool[] items = new bool[5];
@@ -45,10 +46,18 @@ public class GameManager : MonoBehaviour {
 
     public void activateSpawner() {
         GameManager.GM.enemManager.startSpawn();
+        Debug.Log("yes spawn");
+        spawning = true;
     }
 
     public void deactivateSpawner() {
         GameManager.GM.enemManager.stopSpawn();
+        Debug.Log("no spawn");
+        spawning = false;
+    }
+
+    public bool spawningMobs() {
+        return spawning;
     }
 
     public void damagePlayer(int ammount) {
