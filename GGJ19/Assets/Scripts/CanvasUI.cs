@@ -41,6 +41,16 @@ public class CanvasUI : MonoBehaviour {
         }
     }
 
+    public void giveFullHearts() {
+        while (lastHeartIndex > 0) {
+            var child = this.transform.GetChild(0).GetChild(lastHeartIndex-1);
+            var childImg = child.transform.GetChild(0);
+            var img = childImg.GetComponent<Image>();
+            img.sprite = fullHeart;
+            lastHeartIndex--;
+        }
+    }
+
     public void changeSliderVal(float value) {
         var slide = this.transform.GetChild(1).GetComponent<Slider>();
         slide.value = value;

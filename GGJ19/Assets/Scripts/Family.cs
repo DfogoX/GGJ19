@@ -19,7 +19,8 @@ public class Family : MonoBehaviour {
         GameManager.GM.setFamily(this);
         pai = this.transform.GetChild(0).GetComponent<PaiFollow>();
         mae = this.transform.GetChild(1).GetComponent<family_follow>();
-        
+        avoo = this.transform.GetChild(2).GetComponent<family_follow>();
+        avo = this.transform.GetChild(3).GetComponent<family_follow>();
     }
 
     // Update is called once per frame
@@ -35,8 +36,8 @@ public class Family : MonoBehaviour {
     public void respawn() {
         mae.respawn();
         pai.respawn();
-//        avo.respawn();
-//        avoo.respawn();
+        avo.respawn();
+        avoo.respawn();
         if (hasTimmy) {
             filho.respawn();
         }
@@ -46,8 +47,8 @@ public class Family : MonoBehaviour {
     public void stop() {
         mae.stop();
         pai.stop();
-//        avo.stop();
-//        avoo.stop();
+        avo.stop();
+        avoo.stop();
         if (hasTimmy) {
             filho.stop();
         }

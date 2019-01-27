@@ -62,6 +62,9 @@ public class Player : MonoBehaviour {
         this.transform.position = new Vector3(0,-5,0);
         this.transform.GetComponentInChildren<Animator>().Play("PlayerDead");
         Dead = true;
+        moveX = 0f;
+        moveY = 0f;
+        currStamina = startStamina;
     }
 
     public void relive() {
@@ -258,5 +261,13 @@ public class Player : MonoBehaviour {
 
     public int HP() {
         return this.playerHP;
+    }
+
+    public void getFullHP() {
+        this.playerHP = 5;
+    }
+
+    public bool isDead() {
+        return this.Dead;
     }
 }

@@ -82,6 +82,11 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void fullRestorePlayer() {
+        player.getFullHP();
+        canvas.giveFullHearts();
+    }
+
     public int playerHP() {
         return GameManager.GM.player.HP();
     }
@@ -167,23 +172,31 @@ public class GameManager : MonoBehaviour {
     }
 
     private IEnumerator waitForReset() {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         reset();
     }
 
+    private IEnumerator waitForBlackScreen1() {
+        yield return new WaitForSeconds(1);
+        canvas.BlackScreen();
+        StartCoroutine(waitForBlackScreen());
+    }   
     private IEnumerator waitForBlackScreen() {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         canvas.BlackScreen();
         StartCoroutine(waitForReset());
     }
 
+
     public void restart() {
+        canvas.BlackScreen();
         this.player.respawn();
+        fullRestorePlayer();
         //dog.position = Vector3.left / 2;
         dog.position = Vector3.left / 2 + new Vector3(0, -5, 0);
         dog.GetComponentInChildren<Animator>().Play("DogCryingSad");
         family.stop();
-        StartCoroutine(waitForBlackScreen());
+        StartCoroutine(waitForBlackScreen1());
     }
 
     public void setDog(Transform d) {
@@ -192,5 +205,9 @@ public class GameManager : MonoBehaviour {
 
     public void addTimmy(family_follow timmy) {
         family.addTimmy(timmy);
+    }
+
+    public bool isPlayerDead() {
+        return player.isDead();
     }
 }
