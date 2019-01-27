@@ -77,7 +77,7 @@ public class Player : MonoBehaviour {
     private void move() {
         var currSpeed = 0.0f;
         var decay = 20.0f;
-        var restore = 20.0f;
+        var restore = 35.0f;
 
         playAnim(lastAnim);
         if (Input.GetKeyDown("up") || Input.GetKeyDown("w")) {
