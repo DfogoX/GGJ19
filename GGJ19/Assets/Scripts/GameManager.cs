@@ -108,6 +108,8 @@ public class GameManager : MonoBehaviour {
             canvas.activate(index);
             sources[1].Play();
         }
+        if(index == 4) GameObject.Find("EndObject").SetActive(true);
+
     }
 
     public void addItem(String item) {
@@ -140,6 +142,7 @@ public class GameManager : MonoBehaviour {
             case "Food":
                 index = 4;
                 items[4] = true;
+                GameObject.Find("EndObject").SetActive(true);
                 break;
         }
 

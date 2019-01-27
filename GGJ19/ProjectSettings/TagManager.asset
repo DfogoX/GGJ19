@@ -8,6 +8,7 @@ TagManager:
   - Home
   - river
   - SceneHandler
+  - EndObject
   layers:
   - Default
   - TransparentFX
