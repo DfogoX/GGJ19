@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 8753366078774370071}
   - component: {fileID: 2550794807532499658}
   - component: {fileID: 5642184156229441854}
+  - component: {fileID: 8755093451576277294}
   m_Layer: 0
   m_Name: Pai
   m_TagString: Untagged
@@ -263,3 +264,24 @@ MonoBehaviour:
   itemo: {fileID: 9065995568622417308, guid: c0177064fe434a84199c8f6f5ff28af9, type: 3}
   itemIndex: 3
   speed: 3
+--- !u!50 &8755093451576277294
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5883637369736633612}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

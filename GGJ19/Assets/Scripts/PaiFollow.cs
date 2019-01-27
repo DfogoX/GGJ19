@@ -71,7 +71,7 @@ public class PaiFollow : MonoBehaviour {
             var sprTwo = transform.GetChild(1);
             sprTwo.GetComponent<SpriteRenderer>().enabled = true;
             animator = sprTwo.GetComponent<Animator>();
-        }
+        } 
     }
 
     private void OnTriggerExit2D(Collider2D other) {
