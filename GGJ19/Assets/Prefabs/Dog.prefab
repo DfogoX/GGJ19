@@ -160,5 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0653672251918804887d59d654a72516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Item: {fileID: 6355154957620465256, guid: ebd52a688edbb7c48aeae714f539cb1a, type: 3}
   speed: 3
+  NumOfWayPoints: 3
+  _Item: {fileID: 6355154957620465256, guid: ebd52a688edbb7c48aeae714f539cb1a, type: 3}

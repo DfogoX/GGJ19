@@ -13,6 +13,9 @@ public class family_follow : MonoBehaviour {
     private bool caught = false;
     private bool itemGiven = false;
     public float speed;
+    public float NumOfWayPoints;
+    public Transform[] WayPoints;
+    private int currWayPoint;
 
     void Start() {
         animator = GetComponentInChildren<Animator>();
@@ -20,7 +23,7 @@ public class family_follow : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (caught) {
+        if (caught && !itemGiven) {
             Transform playerTransform = GameManager.GM.findPlayer();
             var dist = Vector3.Distance(transform.position, playerTransform.position);
             var direction = Vector3.zero;
@@ -38,7 +41,7 @@ public class family_follow : MonoBehaviour {
                     else {
                         animator.Play("MoveLeft");
                     }
-                }//Moving more verticaly
+                } //Moving more verticaly
                 else {
                     if (direction.y > 0) {
                         animator.Play("MoveUp");
@@ -52,6 +55,39 @@ public class family_follow : MonoBehaviour {
                 animator.Play("Idle");
             }
         }
+
+        //Start Waypoints if any exist
+        if (itemGiven && currWayPoint < NumOfWayPoints) {
+            var dist = Vector3.Distance(transform.position, WayPoints[currWayPoint].position);
+            var direction = Vector3.zero;
+            if (dist > 1) {
+                direction = Vector3.Normalize(WayPoints[currWayPoint].position - transform.position);
+                transform.position = transform.position + direction * Time.deltaTime * speed;
+            }
+
+            if (direction != Vector3.zero) {
+                //Moving more horizontaly
+                if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y)) {
+                    if (direction.x > 0) {
+                        animator.Play("MoveRight");
+                    }
+                    else {
+                        animator.Play("MoveLeft");
+                    }
+                } //Moving more verticaly
+                else {
+                    if (direction.y > 0) {
+                        animator.Play("MoveUp");
+                    }
+                    else {
+                        animator.Play("MoveDown");
+                    }
+                }
+            }
+        }
+        if (currWayPoint > NumOfWayPoints) {
+            animator.Play("Idle");
+        }
     }
 
 
@@ -64,8 +100,7 @@ public class family_follow : MonoBehaviour {
             Invoke("Spawn", 0);
             itemGiven = true;
             GameManager.GM.addItem(itemIndex);
-        } 
-
+        }
     }
 
     void Spawn() {

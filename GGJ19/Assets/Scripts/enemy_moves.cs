@@ -46,7 +46,7 @@ public class enemy_moves : MonoBehaviour {
                 animator.Play("GhostIdleRight");
             }
             else {
-                animator.Play("GhostIdle");
+                animator.Play("Idle");
             }
             rigid.MovePosition(rigid.position + moves * MoveSpeed * Time.deltaTime);
             if (dist <= MaxDist) {
