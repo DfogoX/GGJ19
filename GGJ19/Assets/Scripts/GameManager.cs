@@ -85,50 +85,42 @@ public class GameManager : MonoBehaviour {
     public void addItem(int index) {
         if (index < 5 && index >= 0) {
             items[index] = true;
+            canvas.activate(index);
         }
     }
 
     public void addItem(String item) {
+        var index = -1;
         switch (item) {
             case "Key":
-                items[0] = true;
-                break;
             case "Chave":
+                index = 0;
                 items[0] = true;
                 break;
             case "Rope":
-                items[1] = true;
-                break;
-
             case "Corda":
+                index = 1;
                 items[1] = true;
                 break;
-
             case "Boia":
-                items[2] = true;
-                break;
             case "Floater":
+                index = 2;
                 items[2] = true;
                 break;
             case "Machado":
-                items[3] = true;
-                break;
             case "Axe":
+                index = 3;
                 items[3] = true;
                 break;
             case "Rock":
-                items[4] = true;
-                break;
             case "Pedra":
-                items[4] = true;
-                break;
             case "Comida":
-                items[4] = true;
-                break;
             case "Food":
+                index = 4;
                 items[4] = true;
                 break;
         }
+        canvas.activate(index);
     }
 
     public bool hasItem(int index) {

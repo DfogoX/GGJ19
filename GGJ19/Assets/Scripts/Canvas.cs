@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Canvas : MonoBehaviour {
 
     private int lastHeartIndex = 0;
+    private Transform inventory;
 
     public Sprite fullHeart;
     public Sprite emptyHeart;
@@ -13,6 +14,8 @@ public class Canvas : MonoBehaviour {
     void Start()
     {
         GameManager.GM.setCanvas(this);
+        inventory = this.transform.GetChild(2);
+        deactivateAll();
     }
     
     public void takeHeart() {
@@ -39,6 +42,21 @@ public class Canvas : MonoBehaviour {
     public void changeSliderVal(float value) {
         var slide = this.transform.GetChild(1).GetComponent<Slider>();
         slide.value = value;
+    }
+
+    public void deactivateAll() {
+        foreach (Transform item in inventory) {
+            item.GetComponent<Image>().enabled = false;
+        }
+        activate(inventory.childCount-1);
+    }
+    
+    public void activate(int index) {
+        if (index < 0) return;
+        inventory.GetChild(index).GetComponent<Image>().enabled = true;
+        if (index > 0) {
+            inventory.GetChild(index-1).GetComponent<Image>().enabled = false;
+        }
     }
     
 }
